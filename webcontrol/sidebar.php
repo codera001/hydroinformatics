@@ -1,0 +1,49 @@
+<div class="flapt-sidemenu-wrapper">
+    <!-- Desktop Logo -->
+    <div class="flapt-logo">
+    <a href="dashboard" style="text-decoration: none;">
+    <img src="./img/logo-2.png" alt="" title="" width="70px" class="ms-2 my-4">
+    <span class="title h6" style="color:#fa7720;font-weight:bolder;"> Hyrdroinformatics</span>
+        </a>
+        
+    </div>
+   
+   
+    <div class="flapt-sidenav" id="flaptSideNav">
+        
+        <div class="side-menu-area">
+         
+            <nav>
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="menu-header-title">Dashboard</li>
+                    <li class="active"><a class="text-dark" href="dashboard"><i class='bx bx-home-heart'></i><span>Dashboard</span></a></li>
+                    <!-- <li class="menu-header-title">About us</li>
+                    <li><a href="dynamic-history"><i class='bx bx-list-ul'></i><span>Dynamic histroy</span></a></li>
+                    <li><a href="leadership"><i class='bx bx-list-ul'></i><span>Board members</span></a></li>
+                    <li><a href="management"><i class='bx bx-list-ul'></i><span>Management team</span></a></li>
+                    <li><a href="corporate"><i class='bx bx-list-ul'></i><span>Corporate philosophy</span></a></li> -->
+                    <!-- <li class="menu-header-title">Our business</li>
+                    <li><a href="exploration"><i class='bx bx-list-ul'></i><span>Exploration</span></a></li>
+                    <li><a href="production"><i class='bx bx-list-ul'></i><span>Production</span></a></li>
+                    <li><a href="energy"><i class='bx bx-list-ul'></i><span>Energy</span></a></li> -->
+                    <li class="menu-header-title">Menu's</li>
+                    <li><a href="home-assets"><i class='bx bx-list-ul'></i><span>Home Assets</span></a></li>
+                    <li><a href="about-assets"><i class='bx bx-list-ul'></i><span>About Assets</span></a></li>
+                    <li><a href="services"><i class='bx bx-list-ul'></i><span>Services</span></a></li>
+                    <li><a href="news"><i class='bx bx-list-ul'></i><span>News</span></a></li>
+                    <li><a href="project"><i class='bx bx-list-ul'></i><span>Project</span></a></li>
+                    <li><a href="twitter"><i class='bx bx-list-ul'></i><span>Twitter</span></a></li>
+                    <li><a href="facebook"><i class='bx bx-list-ul'></i><span>Facebook</span></a></li>
+                    <li><a href="google"><i class='bx bx-list-ul'></i><span>Google</span></a></li>
+                    <li><a href="linkedin"><i class='bx bx-list-ul'></i><span>Linkedin</span></a></li>
+                    <li><a href="video"><i class='bx bx-list-ul'></i><span>Youtube-videos</span></a></li>
+                    <li><a href="contact"><i class='bx bx-list-ul'></i><span>Contact</span></a></li>
+                    <li><a href="change-password"><i class='bx bx-list-ul'></i><span>Change password</span></a></li>
+                    <li><a href="logout"><i class='bx bx-list-ul'></i><span>Logout</span></a></li>
+
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
