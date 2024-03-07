@@ -5072,6 +5072,11 @@ tp-caption.Team-Thumb,
 }
 .rev_slider {
     overflow: hidden;
+    background: rgba(8,37,103,.5);
+}
+
+.defaultimg{
+    opacity: 0.3;
 }
 .effect_layer {
     position: absolute;

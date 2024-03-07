@@ -3,7 +3,8 @@
                             <div class="col-12">
                                 <footer class="footer-area d-sm-flex justify-content-center align-items-center justify-content-between">
                                     <div class="copywrite-text">
-                                        <p>Created at @<a href="#">2023</a></p>
+                                        <p>Created at &copy;
+                                    <?php echo date("Y"); ?></p>
                                     </div>
                                     <div class="fotter-icon text-center">
                                         <a href="#" class="action-item mr-2" data-bs-toggle="tooltip" title="Facebook">

@@ -87,7 +87,7 @@ if (isset($_POST['add_about'])) {
                             
                                     <div class="form-group mb-3">
                                         <img src="" alt="" width="100px"><br>
-                                        <label for="image"></label>
+                                        <label for="image">Image</label>
                                         <input id="image" class="form-control" name="image" type="file">
                                     </div>
                                     <div class="form-group mb-3">

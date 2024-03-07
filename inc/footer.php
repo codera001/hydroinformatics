@@ -1,5 +1,5 @@
    <!--Newsleter Section-->
-   <section class="newsletter-section" style="background-image: url(images/background/4.jpg);">
+   <section class="newsletter-section" style="background-image: url(../images/background/4.jpg);">
             <div class="auto-container">
                 <div class="inner-container">
                     <div class="row clearfix">

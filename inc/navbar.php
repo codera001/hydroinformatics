@@ -1,3 +1,5 @@
+<?php require './webcontrol/server/connection.php';?>
+
 <!DOCTYPE html>
 <html lang="en">
 

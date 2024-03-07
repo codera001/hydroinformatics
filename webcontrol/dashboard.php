@@ -2,22 +2,7 @@
 session_start();
 include 'header.php';
 
-
-?>
-
-
-<body>
-
-    <div id="preloader-area">
-        <div class="lds-ripple">
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-
-    <div class="flapt-page-wrapper">
-    <?php include 'sidebar.php'; ?>
-     
+ ?>    
 
 
         <div class="flapt-page-content">
@@ -40,208 +25,7 @@ include 'header.php';
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="container-fluid">
-                        <!-- <div class="row">
-                            <div class="col-12 col-sm-6 col-xl">
-
-                                <div class="card box-margin">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="font-14 text-uppercase">
-                                                    <a href="dynamic-history">Dynamic History</a>
-                                                </h6>
-                                                <div class="row align-items-center no-gutters">
-                                                    <div class="col-auto">
-
-                                                        <span class="font-24 text-dark mr-2">
-
-                                                        </span>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress h-5">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-auto">
-                                                <div class="icon">
-                                                    <img src="img/bg-img/icon-10.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-xl">
-
-                                <div class="card box-margin">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="font-14 text-uppercase">
-                                                     <a href="leadership">Leadership & Board-members</a>
-                                                </h6>
-                                                <div class="row align-items-center no-gutters">
-                                                    <div class="col-auto">
-
-                                                        <span class="font-24 text-dark mr-2">
-
-                                                        </span>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress h-5">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-auto">
-                                                <div class="icon">
-                                                    <img src="img/bg-img/icon-10.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-xl">
-                                <div class="card box-margin">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="font-14 text-uppercase">
-                                                    <a href="management">Management Team</a>
-                                                </h6>
-                                                <div class="row align-items-center no-gutters">
-                                                    <div class="col-auto">
-                                                        <span class="font-24 text-dark mr-2">
-
-                                                        </span>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress h-5">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-auto">
-                                                <div class="icon">
-                                                    <img src="img/bg-img/icon-10.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div> -->
-                        <!-- <div class="row">
-                            <div class="col-12 col-sm-6 col-xl">
-
-                                <div class="card box-margin">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="font-14 text-uppercase">
-                                                    <a href="corporate">Corperative Philosophy</a>
-                                                </h6>
-                                                <div class="row align-items-center no-gutters">
-                                                    <div class="col-auto">
-
-                                                        <span class="font-24 text-dark mr-2">
-
-                                                        </span>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress h-5">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-auto">
-                                                <div class="icon">
-                                                    <img src="img/bg-img/icon-10.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-xl">
-                                <div class="card box-margin">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="font-14 text-uppercase">
-                                                    <a href="exploration">Exploration</a>
-                                                </h6>
-                                                <div class="row align-items-center no-gutters">
-                                                    <div class="col-auto">
-                                                        <span class="font-24 text-dark mr-2">
-
-                                                        </span>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress h-5">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-auto">
-                                                <div class="icon">
-                                                    <img src="img/bg-img/icon-10.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-xl">
-
-                                <div class="card box-margin">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="font-14 text-uppercase">
-                                                     <a href="production">Production</a>
-                                                </h6>
-                                                <div class="row align-items-center no-gutters">
-                                                    <div class="col-auto">
-
-                                                        <span class="font-24 text-dark mr-2">
-
-                                                        </span>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress h-5">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-auto">
-                                                <div class="icon">
-                                                    <img src="img/bg-img/icon-10.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                       
 
                         <div class="row">
                         <div class="col-12 col-sm-6 col-xl">
@@ -250,7 +34,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                    <a href="project">Project</a>
+                                                    <a href="project">Projects</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -282,7 +66,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                    <a href="asset">Asset</a>
+                                                    <a href="home-asset">Home Assets</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -314,7 +98,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                     <a href="environment">Environment</a>
+                                                     <a href="carousel">Carousel Images</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -353,7 +137,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                 <a href="twitter">Twitter</a>
+                                                 <a href="about-assets">About Assets</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -387,7 +171,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                   <a href="facebook">Facebook</a>
+                                                   <a href="services">Services</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -419,7 +203,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                    <a href="google">Google</a>
+                                                    <a href="news">News</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -455,7 +239,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                 <a href="news">News/Blogs</a>
+                                                 <a href="team">Team</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -488,7 +272,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                 <a href="linkedin">Linkedin</a>
+                                                 <a href="socials">Socials</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -522,7 +306,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                   <a href="video">Youtube-Videos</a>
+                                                   <a href="contact">Contact</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -550,46 +334,6 @@ include 'header.php';
                             </div>
                             
 
-
-
-
-
-
-                            <!-- <div class="col-12 col-sm-6 col-xl">
-
-                                <div class="card box-margin">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="font-14 text-uppercase">
-                                                    <a href="energy">Energy</a>
-                                                </h6>
-                                                <div class="row align-items-center no-gutters">
-                                                    <div class="col-auto">
-
-                                                        <span class="font-24 text-dark mr-2">
-
-                                                        </span>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress h-5">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-auto">
-                                                <div class="icon">
-                                                    <img src="img/bg-img/icon-10.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-
-
                         </div>
                         <div class="row">
                             <div class="col-12 col-sm-6 col-xl">
@@ -599,7 +343,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                 <a href="career">Career</a>
+                                                 <a href="change-password">Change Password</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">
@@ -697,4 +441,6 @@ include 'header.php';
 
 
                     </div>
+
+                    
                     <?php include 'footer.php';  ?>
