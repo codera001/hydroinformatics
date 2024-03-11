@@ -1,7 +1,4 @@
 <?php  
-
-session_start();
+require 'server/connection.php';
 session_destroy();
 header('location:index');
-
-?>

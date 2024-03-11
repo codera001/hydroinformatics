@@ -1,4 +1,14 @@
-<?php require '../inc/header.php';?>
+<?php require '../inc/header.php';
+
+$stmt = $conn->prepare("SELECT * FROM about_assets");
+$stmt->execute();
+$results = $stmt->get_result();
+
+
+$stmt = $conn->prepare("SELECT * FROM services LIMIT 3");
+$stmt->execute();
+$result2 = $stmt->get_result();
+?>
 
         <!-- Sticky Header  -->
         <div class="sticky-header">
@@ -89,10 +99,19 @@
                 <!-- Image Column -->
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner-column wow fadeInLeft">
+                    <?php if ($results->num_rows > 0) {
+                    foreach ($results as $result) { ?>
                         <div class="text-layer">A</div>
-                        <figure class="image-1 wow fadeInUp"><a href="../images/resource/image-5.jpg" class="lightbox-image" data-fancybox="images"><img src="../images/resource/image-5.jpg" alt=""></a></figure>
-                        <figure class="image-2 wow fadeInDown"><a href="../images/resource/image-6.jpg" class="lightbox-image" data-fancybox="images"><img src="../images/resource/image-6.jpg" alt=""></a></figure>
-                        <div class="video-link wow zoomIn"><a href="https://www.youtube.com/watch?v=e_WOEL6F1YE" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-play"></span></a></div>
+                        <figure class="image-1 wow fadeInUp"><a href="../webcontrol/assets/about_image/<?php echo $result['image'];?>" class="lightbox-image" data-fancybox="images">
+                        <img src="../webcontrol/assets/about_image/<?php echo $result['image'];?>" alt=""></a></figure>
+                        <figure class="image-2 wow fadeInDown"><a href="../webcontrol/assets/about_image/<?php echo $result['image_two'];?>" class="lightbox-image" data-fancybox="images"><img src="../webcontrol/assets/about_image/<?php echo $result['image_two'];?>" alt=""></a></figure>
+                        <div class="video-link wow zoomIn"><a href="h<?php echo $result['video_link'];?>" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-play"></span></a></div>
+                        <?php } ?>
+                <?php } else { ?>
+                    <div class="col-md-12">
+                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
+                    </div>
+                <?php } ?>
                     </div>
                 </div>
             </div>
@@ -178,51 +197,36 @@ Our values lie in our strength and abilities to meet and exceed our clients' dem
                 <h2>What We Do?</h2>
             </div>
             <div class="row">
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="../services/pipeline-route"><img src="../images/resource/service-1.jpg" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <span class="icon flaticon-robot-1"></span>
-                            <h3><a href="../services/pipeline-route">Pipeline Route Survey</a></h3>
-                            <div class="text">Experience precision and reliability with our comprehensive pipeline route surveys..</div>
-                            <div class="link-box"><a href="../services/pipeline-route">Read More</a></div>
+            <?php if ($result2->num_rows > 0) {
+                foreach ($result2 as $result_two) { ?>
+                    <!-- Service Block -->
+                    <div class="service-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <figure class="image"><a href="../services/more-services"><img
+                                            src="../webcontrol/assets/service_image/<?php echo $result_two['image'] ?>"></a>
+                                </figure>
+                            </div>
+                            <div class="lower-content">
+                                <span class="icon flaticon-robot-1"></span>
+                                <h3><a href="./services/more-services"><?php echo $result_two['service_category'] ?></a></h3>
+                                <!-- <div class="text">Lorem ipsum dolor sit amet, consectetur adip isicing elit sed do.</div> -->
+                                <div class="link-box"><a href="../services/more-services">Read More</a></div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="../services/geophysical"><img src="../images/resource/service-2.jpg" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <span class="icon flaticon-industry"></span>
-                            <h3><a href="../services/geophysical">Geophysical Survey</a></h3>
-                            <div class="text">Unlock valuable insights with our geophysical survey solutions..</div>
-                            <div class="link-box"><a href="../services/geophysical">Read More</a></div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="../services/geo-technical"><img src="../images/resource/service-3.jpg" alt=""></a></figure>
-                        </div>
-                        <div class="lower-content">
-                            <span class="icon flaticon-robot-arm"></span>
-                            <h3><a href="../services/geo-technical">Geotechnical Engineering</a></h3>
-                            <div class="text">Empower your projects with our expertise in geotechnical engineering.</div>
-                            <div class="link-box"><a href="../services/geo-technical">Read More</a></div>
-                        </div>
-                    </div>
+
+
+                <?php } ?>
+            <?php } else { ?>
+                <div class="col-md-12">
+                    <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
                 </div>
-            </div>
+            <?php } ?>
+        </div>
+
 
             <!-- Btn Box -->
             <div class="btn-box text-center">
@@ -234,15 +238,15 @@ Our values lie in our strength and abilities to meet and exceed our clients' dem
 
 
     <!-- Team Section -->
-    <section class="team-section alternate">
+    <!-- <section class="team-section alternate">
         <div class="auto-container">
             <div class="sec-title text-center">
-                <!-- <span class="title">Our Team</span> -->
+                
                 <h2>Important Members</h2>
             </div>
 
             <div class="row">
-                <!-- Team Block -->
+            
                 <div class="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
                     <div class="inner-box">
                         <div class="image-box">
@@ -261,45 +265,10 @@ Our values lie in our strength and abilities to meet and exceed our clients' dem
                     </div>
                 </div>
 
-                <!-- Team Block -->
-                <div class="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="team.html"><img src="../images/resource/team-2.jpg" alt=""></a></figure>
-                            <ul class="social-icon-one">
-                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            </ul>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name"><a href="team.html">Simone Ledoux</a></h5>
-                            <span class="designation">Designer</span>
-                        </div>
-                    </div>
-                </div>
+             
 
-                <!-- Team Block -->
-                <div class="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="team.html"><img src="../images/resource/team-3.jpg" alt=""></a></figure>
-                            <ul class="social-icon-one">
-                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            </ul>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name"><a href="team.html">Bernard Payet</a></h5>
-                            <span class="designation">Marketer</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--End Team Section -->
     <?php require '../inc/footer.php';?>

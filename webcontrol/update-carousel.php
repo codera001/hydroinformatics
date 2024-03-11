@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'header.php';
 $unique_id = $_GET['update'];
  $current_image ='';

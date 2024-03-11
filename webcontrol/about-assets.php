@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'header.php';
 
 $stmt = $conn->prepare("SELECT * FROM about_assets ORDER BY created_at");
@@ -44,6 +44,7 @@ $results = $stmt->get_result();
                                             <tr>
                                                 <th>Date</th>
                                                 <th>Image</th>
+                                                <th>Image two</th>
                                                 <th>Video Link</th>
                                                 <th>Action</th>
                                             </tr>
@@ -59,6 +60,11 @@ $results = $stmt->get_result();
                                                     <td>
                                                         <?php if (!empty($result['image']) && $result['image'] !== './assets/about_image/') { ?>
                                                             <span class="client"><img src="<?php echo ABOUTURL . $result['image'] ?>" width="100" alt="about asset"></span>
+                                                        <?php } ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if (!empty($result['image_two']) && $result['image'] !== './assets/about_image/') { ?>
+                                                            <span class="client"><img src="<?php echo ABOUTURL . $result['image_two'] ?>" width="100" alt="about asset"></span>
                                                         <?php } ?>
                                                     </td>
                                                     <td>

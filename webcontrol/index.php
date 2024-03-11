@@ -1,14 +1,5 @@
 <?php
-session_start();
-// include 'header.php'; 
-
 include 'server/connection.php';
-
-if(isset($_SESSION['logged_in'])) {
-    header('location: dashboard');
-    exit;
-}
-
 
 // $password = "hydro12345";
 // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -24,36 +15,43 @@ if(isset($_POST['login'])) {
         header('location: login?error=Invalid email format');
         exit;
     }
-
-    $stmt = $conn->prepare("SELECT email, password FROM admin WHERE email = ? LIMIT 1 ");
+    
+    $stmt = $conn->prepare("SELECT email, password FROM admin WHERE email = ?");
     $stmt->bind_param('s', $email);
-
+    
     if($stmt->execute()) {
-        $stmt->bind_result($dbEmail, $hashed_password);
+        $stmt->bind_result($email_from_db, $hashed_password);
         $stmt->store_result();
 
         if($stmt->num_rows == 1) {
             $stmt->fetch();
 
             if (password_verify($password, $hashed_password)) {
-                $_SESSION['admin_email'] = $dbEmail;
+                $_SESSION['admin_email'] = $email_from_db;
                 $_SESSION['logged_in'] = true;
+                header('Location: ' . ADMINURL . 'dashboard');
+                $_SESSION['login'] = '<div class="alert alert-success">Login successful</div>';
 
-                header('location: dashboard?success=logged in success');
+                
                 exit;
             } else {
-                header('location: index?error=Incorrect password');
+                header('Location: ' . ADMINURL . 'index');
+                $_SESSION['login'] = '<div class="alert alert-danger">Incorrect Password</div>';
                 exit;
             }
         } else {
-            header('location: index?error=Email not found');
+            header('Location: ' . ADMINURL . 'index');
+            $_SESSION['login'] = '<div class="alert alert-danger">Email not found</div>';
             exit;
         }
     } else {
-        header('location: index?error=Something went wrong');
+        header('Location: ' . ADMINURL . 'index');
+        $_SESSION['login'] = '<div class="alert alert-danger">Something went wrong</div>';
         exit;
     }
 }
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -107,11 +105,15 @@ if(isset($_POST['login'])) {
 
                             
      <div class="text-center mb-5 py-5">
+    <?php if(isset($_SESSION['login'])){
+        echo $_SESSION['login'];
+        unset($_SESSION['login']);
+    } ?>
      <!-- <a href="index" style="text-decoration: none;">
             <span class="text-center " style="background-color:#5867dd; font-size: 30px; border-radius:40px; font-weight: bold; padding: 60px; color:white;">OGRRE</span>
         </a> -->
 
-        <img  src="./assets/img/logo-2.png" width="150" alt="">
+        <img  src="img/logo-2.png" width="150" alt="">
      </div>                      
 
         

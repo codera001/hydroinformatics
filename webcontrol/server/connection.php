@@ -1,5 +1,10 @@
 <?php 
-
+// start session
+session_start();
+// Prevent caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 // App root
 define('APPROOT', dirname(dirname(__FILE__)));
 define('SITEURL', 'http://localhost/hydroinformatics/');
@@ -13,6 +18,8 @@ define('CAROUSELURL', 'http://localhost/hydroinformatics/webcontrol/assets/carou
 define('CLIENTURL', 'http://localhost/hydroinformatics/webcontrol/assets/client_image/');
 define('REVIEWURL', 'http://localhost/hydroinformatics/webcontrol/assets/review_image/');
 define('NEWSURL', 'http://localhost/hydroinformatics/webcontrol/assets/news_image/');
+define('EQUIPURL', 'http://localhost/hydroinformatics/webcontrol/assets/equip_image/');
+
 $conn = mysqli_connect('localhost', 'root', '', 'hydroinformatics')
 or die('cant connect to database');  
 
@@ -20,6 +27,11 @@ or die('cant connect to database');
 //  $conn = mysqli_connect('localhost', 'ogrrecom_server', '@admin100@', 'ogrrecom_server')
 //  or die('cant connect to database');  
 
-
-
+function isLoggedIn(){
+    if(isset($_SESSION['logged_in'])){
+        return true;
+    }else{
+        return false;
+    }
+}
 

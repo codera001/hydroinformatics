@@ -1,4 +1,9 @@
-<?php require '../inc/header.php';?>
+<?php require '../inc/header.php';
+$stmt = $conn->prepare("SELECT * FROM client_review ORDER BY created_at");
+$stmt->execute();
+$results = $stmt->get_result();
+
+?>
 
         <!-- Sticky Header  -->
         <div class="sticky-header">
@@ -59,40 +64,36 @@
                             <span class="title">Clients</span>
                             <h2>Our Clients Reviews </h2>
                         </div>
-
+                      
                         <div class="testimonial-carousel owl-carousel owl-theme">
+                        <?php if ($results->num_rows > 0) {
+                    foreach ($results as $result) { ?>
                             <!-- Testimonial Block -->
                             <div class="testimonial-block-three">
+                           
                                 <div class="inner">
+                           
                                     <span class="icon quote-icon"></span>
-                                    <div class="text">Lorem ipsum dolor sit amet consectur adipisicing elit eiusmod tempor incididunt ut labore dolore magna aliqua.enim minim veniam.quis nostrud exercitation ullamco laboris n.aliquip exa commodo consequat duis aute irure dolor reprehen.derit velit cillum.</div>
-                                    <div class="name">Daniela Schulte</div>
+                                    <div class="text"><?php echo $result['body'];?></div>
+                                    <div class="name"><?php echo $result['name'];?></div>
+                                    
                                 </div>
+                           
                             </div>
 
-                            <!-- Testimonial Block -->
-                            <div class="testimonial-block-three">
-                                <div class="inner">
-                                    <span class="icon quote-icon"></span>
-                                    <div class="text">Lorem ipsum dolor sit amet consectur adipisicing elit eiusmod tempor incididunt ut labore dolore magna aliqua.enim minim veniam.quis nostrud exercitation ullamco laboris n.aliquip exa commodo consequat duis aute irure dolor reprehen.derit velit cillum.</div>
-                                    <div class="name">Daniela Schulte</div>
-                                </div>
-                            </div>
-
-                            <!-- Testimonial Block -->
-                            <div class="testimonial-block-three">
-                                <div class="inner">
-                                    <span class="icon quote-icon"></span>
-                                    <div class="text">Lorem ipsum dolor sit amet consectur adipisicing elit eiusmod tempor incididunt ut labore dolore magna aliqua.enim minim veniam.quis nostrud exercitation ullamco laboris n.aliquip exa commodo consequat duis aute irure dolor reprehen.derit velit cillum.</div>
-                                    <div class="name">Daniela Schulte</div>
-                                </div>
-                            </div>                            
+                            <?php } ?>
+                <?php } else { ?>
+                    <div class="col-md-12">
+                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
+                    </div>
+                <?php } ?>                       
                         </div>
+                    
                     </div>
                 </div>
                 <div class="image-column col-lg-5 col-md-12 col-sm-12">
                     <div class="image-box wow fadeInLeft">
-                        <figure class="image"><a href="images/resource/testimonial-img.jpg" class="lightbox-image"><img src="images/resource/testimonial-img.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="../images/resource/review.jpeg" class="lightbox-image"><img src="../images/resource/review.jpeg" alt=""></a></figure>
                     </div>
                 </div>
             </div>
@@ -111,47 +112,35 @@
                         <h2>Clients Reviews</h2>
                     </div>
                     <div class="testimonial-carousel owl-carousel owl-theme">
-                        <!-- Testimonial Block -->
-                        <div class="testimonial-block-two">
-                            <div class="inner-box">
-                                <div class="text">Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</div>
-                                <div class="info-box">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <span class="designation">Daniela Schulte</span>
+                    <?php if ($results->num_rows > 0) {
+                    foreach ($results as $result) { ?>
+                            <!-- Testimonial Block -->
+                            <div class="testimonial-block-three">
+                           
+                                <div class="inner">
+                           
+                                    <span class="icon quote-icon"></span>
+                                    <div class="text"><?php echo $result['body'];?></div>
+                                    <div class="name"><?php echo $result['name'];?></div>
+                                    
                                 </div>
+                           
                             </div>
-                        </div>
 
-                        <!-- Testimonial Block -->
-                        <div class="testimonial-block-two">
-                            <div class="inner-box">
-                                <div class="text">Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</div>
-                                <div class="info-box">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star light"></span>
-                                    </div>
-                                    <span class="designation">Daniela Schulte</span>
-                                </div>
-                            </div>
-                        </div>
+                            <?php } ?>
+                <?php } else { ?>
+                    <div class="col-md-12">
+                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
+                    </div>
+                <?php } ?> 
                     </div>
                 </div>
             </div>
 
             <!-- Image Column -->
-            <div class="image-column" style="background-image: url(images/background/7.jpg);">
+            <div class="image-column" style="background-image: url(../images/resource/review.jpeg);">
                 <div class="image-box">
-                    <figure class="image"><img src="images/background/7.jpg" alt=""></figure>
+                    <figure class="image"><img src="../images/resource/review.jpeg" alt=""></figure>
                 </div>
             </div>
         </div>
@@ -168,11 +157,13 @@
 
             <div class="carousel-outer">
                 <div class="testimonial-carousel-two owl-carousel owl-theme">
+                <?php if ($results->num_rows > 0) {
+                    foreach ($results as $result) { ?>
                     <!-- Testimonial Block -->
                     <div class="testimonial-block-four">
                         <div class="inner-box">
-                            <div class="thumb"><img src="images/resource/thumb-2.jpg" alt=""></div>
-                            <h6 class="name">Daniela Schulte</h6>
+                            <div class="thumb"><img src="../webcontrol/assets/review_image/<?php echo $result['image'];?>" alt=""></div>
+                            <h6 class="name"><?php echo $result['name'];?></h6>
                             <div class="rating">
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
@@ -180,29 +171,22 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star light"></span>
                             </div>
-                            <div class="text">Lorem ipsum dolor sit amet consectur adipisicing elit eiusmod tem por incididunt ut labore dolore magna aliqua.enim minim veniam. quis nostrud exercitation.</div>
+                            <div class="text"><?php echo $result['body'];?></div>
                         </div>
                     </div>
 
-                    <!-- Testimonial Block -->
-                    <div class="testimonial-block-four">
-                        <div class="inner-box">
-                            <div class="thumb"><img src="images/resource/thumb-3.jpg" alt=""></div>
-                            <h6 class="name">Sieglinde Merkel</h6>
-                            <div class="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star light"></span>
-                            </div>
-                            <div class="text">Lorem ipsum dolor sit amet consectur adipisicing elit eiusmod tem por incididunt ut labore dolore magna aliqua.enim minim veniam. quis nostrud exercitation.</div>
-                        </div>
+                    <?php } ?>
+                <?php } else { ?>
+                    <div class="col-md-12">
+                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
                     </div>
+                <?php } ?> 
                 </div>
             </div>
         </div>
     </section>
+
+   
     <!--End Testimonial Section Three -->
 
     <?php require '../inc/footer.php';?>

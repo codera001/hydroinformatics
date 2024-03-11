@@ -1,3 +1,8 @@
+<?php
+$stmt = $conn->prepare("SELECT * FROM carousel_images LIMIT 1");
+$stmt->execute();
+$result = $stmt->get_result();
+?>
    <!--Newsleter Section-->
    <section class="newsletter-section" style="background-image: url(images/background/4.jpg);">
             <div class="auto-container">
@@ -46,12 +51,21 @@
                                 <div class="widget-content">
                                     <div class="text">Join our community on social media and stay updated with the latest
                                     news, announcements, and insights.</div>
+                                    <?php if ($result->num_rows > 0) {
+                                foreach ($result as $result_one) { ?>
                                     <ul class="social-icon-colored">
-                                        <li class="google"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                        <li class="facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li class="dribbble"><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                                        <li class="twitter"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li class="google"><a href="<?php echo $result_one['instagram']; ?>"><i
+                                                    class="fab fa-instagram"></i></a></li>
+                                        <li class="facebook"><a href="<?php echo $result_one['facebook']; ?>"><i
+                                                    class="fab fa-facebook-f"></i></a></li>
+                                        <li class="dribbble"><a href="<?php echo $result_one['linkedin']; ?>"><i
+                                                    class="fab fa-linkedin"></i></a></li>
+                                        <li class="twitter"><a href="<?php echo $result_one['twitter']; ?>"><i
+                                                    class="fab fa-twitter"></i></a></li>
                                     </ul>
+                                <?php } ?>
+                            <?php } else { ?>
+                            <?php } ?>
 
                                 </div>
                             </div>

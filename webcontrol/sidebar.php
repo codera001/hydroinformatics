@@ -16,16 +16,7 @@
             <nav>
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="menu-header-title">Dashboard</li>
-                    <li class="active"><a class="text-dark" href="dashboard"><i class='bx bx-home-heart'></i><span>Dashboard</span></a></li>
-                    <!-- <li class="menu-header-title">About us</li>
-                    <li><a href="dynamic-history"><i class='bx bx-list-ul'></i><span>Dynamic histroy</span></a></li>
-                    <li><a href="leadership"><i class='bx bx-list-ul'></i><span>Board members</span></a></li>
-                    <li><a href="management"><i class='bx bx-list-ul'></i><span>Management team</span></a></li>
-                    <li><a href="corporate"><i class='bx bx-list-ul'></i><span>Corporate philosophy</span></a></li> -->
-                    <!-- <li class="menu-header-title">Our business</li>
-                    <li><a href="exploration"><i class='bx bx-list-ul'></i><span>Exploration</span></a></li>
-                    <li><a href="production"><i class='bx bx-list-ul'></i><span>Production</span></a></li>
-                    <li><a href="energy"><i class='bx bx-list-ul'></i><span>Energy</span></a></li> -->
+                    <li class="active"><a class="text-dark" href="dashboard"><i class='bx bx-home-heart'></i><span>Dashboard</span></a></li>                 
                     <li class="menu-header-title">Menu's</li>
                     <li><a href="home-assets"><i class='bx bx-list-ul'></i><span>Home Assets</span></a></li>
                     <li><a href="carousel"><i class='bx bx-list-ul'></i><span>Carousel Images</span></a></li>
@@ -36,6 +27,7 @@
                     <li><a href="clients"><i class='bx bx-list-ul'></i><span>Clients</span></a></li>
                     <li><a href="reviews"><i class='bx bx-list-ul'></i><span>Client Reviews</span></a></li>
                     <li><a href="team"><i class='bx bx-list-ul'></i><span>Team</span></a></li>
+                    <li><a href="equipments"><i class='bx bx-list-ul'></i><span>Equipments</span></a></li>
                     <li><a href="socials"><i class='bx bx-list-ul'></i><span>Socials</span></a></li>
                 
                     <li><a href="contact"><i class='bx bx-list-ul'></i><span>Contact</span></a></li>

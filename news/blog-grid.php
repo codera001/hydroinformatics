@@ -1,4 +1,9 @@
-<?php require '../inc/header.php';?>
+<?php require '../inc/header.php';
+$stmt = $conn->prepare("SELECT * FROM news ORDER BY created_at LIMIT 10");
+$stmt->execute(); 
+$results = $stmt->get_result();
+
+?>
 
         <!-- Sticky Header  -->
         <div class="sticky-header">
@@ -57,215 +62,92 @@
                 <div class="content-side col-lg-8 col-md-12 col-sm-12">
                     <div class="blog-grid">
                         <div class="row">
-                            
+                        <?php if ($results->num_rows > 0) {
+                    foreach ($results as $result) { 
+                        ?>
+                   
                             <!-- News Block Three -->
                             <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
                                 <div class="inner-box">
                                     <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-6.jpg" alt=""></a></figure>
+                                        <figure class="image"><a href="blog-detail?view=<?php echo $result['id'] ?>"><img src="../webcontrol/assets/news_image/<?php echo $result['image'];?>" alt=""></a></figure>
                                     </div>
                                     <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
+                                        <div class="date"><span>   <?php echo (new DateTime($result['created_at']))->format('M d, Y h:i A') ?></div>
+                                        <h5><a href="blog-detail?view=<?php echo $result['id'] ?>"><?php echo $result['title'];?></a></h5>
+                                      
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- News Block Three -->
-                            <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="inner-box">
-                                    <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-7.jpg" alt=""></a></figure>
-                                    </div>
-                                    <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- News Block Three -->
-                            <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
-                                <div class="inner-box">
-                                    <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-8.jpg" alt=""></a></figure>
-                                    </div>
-                                    <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- News Block Three -->
-                            <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="inner-box">
-                                    <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-9.jpg" alt=""></a></figure>
-                                    </div>
-                                    <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- News Block Three -->
-                            <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
-                                <div class="inner-box">
-                                    <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-10.jpg" alt=""></a></figure>
-                                    </div>
-                                    <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- News Block Three -->
-                            <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="inner-box">
-                                    <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-11.jpg" alt=""></a></figure>
-                                    </div>
-                                    <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- News Block Three -->
-                            <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
-                                <div class="inner-box">
-                                    <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-12.jpg" alt=""></a></figure>
-                                    </div>
-                                    <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- News Block Three -->
-                            <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="inner-box">
-                                    <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-13.jpg" alt=""></a></figure>
-                                    </div>
-                                    <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- News Block Three -->
-                            <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
-                                <div class="inner-box">
-                                    <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-14.jpg" alt=""></a></figure>
-                                    </div>
-                                    <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- News Block Three -->
-                            <div class="news-block-four col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="inner-box">
-                                    <div class="image-box">
-                                        <figure class="image"><a href="blog-detail.html"><img src="../images/resource/news-15.jpg" alt=""></a></figure>
-                                    </div>
-                                    <div class="lower-content">
-                                        <div class="date"><span>On 26 Dec, 2018</span> 3 Mins Read</div>
-                                        <h5><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque.</a></h5>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
+                <?php } else { ?>
+                    <div class="col-md-12">
+                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
+                    </div>
+                <?php } ?>
                         </div>
 
-                        <!--Styled Pagination-->
-                        <ul class="styled-pagination">
-                            <li><a href="#" class="active">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#"><span class="fa fa-angle-right"></span></a></li>
-                        </ul>                
-                        <!--End Styled Pagination-->
+                     
                     </div>
                 </div>
 
                 <!--Sidebar Side-->
                 <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
                     <aside class="sidebar">
-                        <!-- Services Cat List -->
-                        <div class="sidebar-widget about-widget">
-                            <div class="sidebar-title"><h3>About Me</h3></div>
-                            <div class="about-block">
-                                <div class="inner-box">
-                                    <div class="thumb"><img src="../images/resource/thumb-4.jpg" alt=""></div>
-                                    <div class="name">I am Laisha Bednar</div>
-                                    <div class="text">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum sed perspiciatis.</div>
-                                    <div class="signature"><img src="../images/resource/sign.png" alt=""></div>
-                                    <div class="social-links">
-                                        <ul class="social-icon-two clearfix">
-                                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-dribbble"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
 
-                        <!-- Services Cat List -->
-                        <div class="sidebar-widget categories">
+                    <div class="sidebar-widget categories">
                             <div class="sidebar-title"><h3>Our Services</h3></div>
                             <ul class="category-list">
-                                <li class="active"><a href="project-detail.html">Pipeline Route Survey</a></li>
-                                <li><a href="site-minning.html">Site Mining</a></li>
-                                <li><a href="construction-work.html">Constrution Works</a></li>
-                                <li><a href="renovation.html">Renovations</a></li>
-                                <li><a href="floor-foots.html">Floor Roofs</a></li>
-                                <li><a href="market-research.html">Market Research</a></li>
+                            <li class="active"><a href="../services/pipeline-route.php">Pipeline Route Survey</a></li>
+                                <li><a href="../services/geophysical.php">Geophysical Survey.</a></li>
+                                <li><a href="../services/geo-technical.php"> Geotechnical Engineering.</a></li>
+                                <li><a href="../services/2d-seismic.php"> 2DSeismicSurvey.</a></li>
+                                <li><a href="../services/dredge.php">Dredge Monitoring and Supervision.</a></li>
+                                <li><a href="../services/rig-move.php"> Rig Move and Rig Positioning.</a></li>
+                                <li><a href="../services/cable-route.php">Cable Route Survey.</a></li>
+                                <li><a href="../services/engineering-sup.php">Engineering Support.</a></li>
+                                <li><a href="../services/rescue.php">Search and Rescue Operation.</a></li>
+                                <li><a href="../services/environmental.php">Environmental Impact Assessment(EIA).</a></li>
+                                <li><a href="../services/geographic.php">Geographic Information System(GIS).</a></li>
+                                <li><a href="../services/geodetic.php">Topo-Geodetic Survey.</a></li>
+                                <li><a href="../services/.php">Hydrographic Survey.</a></li>
+                                <li><a href="../services/bathy.php">Bathymetric Survey and Mapping.</a></li>
+                                <li><a href="../services/rov-survey.php">ROV Survey and Positioning.</a></li>
+                                <li><a href="../services/auv-survey.php"> AUV Survey and Positioning.</a></li>
+                                <li><a href="../services/dive-support.php">Dive Support.</a></li>
                             </ul>
                         </div>
 
                         <!-- Post Widget -->
+                        <?php
+                        $stmt = $conn->prepare("SELECT * FROM news ORDER BY created_at LIMIT 3");
+                        $stmt->execute(); 
+                        $results = $stmt->get_result();
+                        ?>
                         <div class="sidebar-widget popular-posts">
                             <div class="sidebar-title"><h3>Latest Article</h3></div>
 
                             <div class="widget-content">
+                                        <?php if ($results->num_rows > 0) {
+                                foreach ($results as $result) { 
+                                    ?>
                                 <article class="post">
                                     <div class="post-inner">
-                                        <figure class="post-thumb"><a href="blog-detail.html"><img src="../images/resource/post-thumb-1.jpg" alt=""></a></figure>
-                                        <div class="post-info">On 26 Dec, 2018</div>
-                                        <div class="text"><a href="blog-detail.html">Ratione voluptem seque nesciunt. </a></div>
+                                        <figure class="post-thumb"><a href="blog-detail?view=<?php echo $result['id'] ?>"><img src="../webcontrol/assets/news_image/<?php echo $result['image'];?>" alt=""></a></figure>
+                                        <div class="post-info"> <?php echo (new DateTime($result['created_at']))->format('M d, Y h:i A') ?></div>
+                                        <div class="text"><a href="blog-detail?view=<?php echo $result['id'] ?>.html"><?php echo $result['title'];?> </a></div>
                                     </div>
                                 </article>
                                 
-                                <article class="post">
-                                    <div class="post-inner">
-                                        <figure class="post-thumb"><a href="blog-detail.html"><img src="../images/resource/post-thumb-2.jpg" alt=""></a></figure>
-                                        <div class="post-info">On 26 Dec, 2018</div>
-                                        <div class="text"><a href="blog-detail.html">Conseqe untur magna eos ratione.</a></div>
+                                            
+                                            <?php } ?>
+                                <?php } else { ?>
+                                    <div class="col-md-12">
+                                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
                                     </div>
-                                </article>
-                                
-                                <article class="post">
-                                    <div class="post-inner">
-                                        <figure class="post-thumb"><a href="blog-detail.html"><img src="../images/resource/post-thumb-3.jpg" alt=""></a></figure>
-                                        <div class="post-info">On 26 Dec, 2018</div>
-                                        <div class="text"><a href="blog-detail.html">Sdipisci velit sed quia non tempora.</a></div>
-                                    </div>
-                                </article>
+                                <?php } ?>
                             </div>
                         </div>
 
@@ -273,12 +155,12 @@
                         <div class="sidebar-widget brochure">
                             <div class="brochure-box">
                                 <h6>Need Help<span>?</span></h6>
-                                <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia. deserunt mollit.</p>
+                             
                                 <ul class="info-box">
-                                    <li><span class="icon fa fa-envelope"></span> <a href="mailto:hello@example.com">hello@example.com</a></li>
-                                    <li><a href="tel:(0251)2353256"><span class="icon fa fa-phone"></span> (0251) 235 3256</a></li>
+                                    <li><span class="icon fa fa-envelope"></span> <a href="#">hydrotherapyservicesltd@gmail.com</a></li>
+                                    <li><a href="#"><span class="icon fa fa-phone"></span> 0703 295 3246, 0806 227 3384</a></li>
                                 </ul>
-                                <a href="contact.php" class="theme-btn btn-style-one">Contact Us</a>
+                                <a href="../contact/contact" class="theme-btn btn-style-one">Contact Us</a>
                             </div>
                         </div>
                     </aside>

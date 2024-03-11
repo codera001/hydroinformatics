@@ -1,4 +1,8 @@
-<?php require '../inc/header.php';?>
+<?php require '../inc/header.php';
+
+$stmt = $conn->prepare("SELECT * FROM services WHERE service_category = 'Rig Move and Rig Positioning'");
+$stmt->execute();
+$results = $stmt->get_result();?>?>
 
     <!--Page Title-->
     <section class="page-title" style="background-image:url(../images/background/13.jpg);">
@@ -22,76 +26,30 @@
         <div class="auto-container">
             <div class="row">
                 <!--Content Side-->
+                <?php if ($results->num_rows > 0) {
+                    foreach ($results as $result) { ?>
                 <div class="content-side col-lg-8 col-md-12 col-sm-12">
                     <div class="service-detail">
                         <!-- Image Box -->
                         <div class="image-box">
                             <div class="image wow fadeIn">
-                                <a href="../images/resource/service-detail.jpg" class="lightbox-image" data-fancybox="gallery"><img src="../images/resource/service-detail.jpg" alt=""></a>
+                                <a href="#" class="lightbox-image" data-fancybox="gallery"><img src="../webcontrol/assets/service_image/<?php echo $result['image'];?>" alt=""></a>
                             </div>
                         </div>
 
                         <!--Title Style One-->
                         <div class="content-box"> 
-                            <h2>Rig Move and Rig Positioning</h2>
-                            <p>Dolor sit amet consectetur elit sed do eiusmod tempor incd idunt labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat.duis aute irure dolor in reprehen derit in voluptate velit esse. proident sunt in culpa qui officia deserunt mollit anim est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p>
-                            <p>Aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
+                            <h2><?php echo $result['service_category'];?></h2>
+                            <p><?php echo $result['body'];?></p>
                             <div class="two-column row">
-                                <div class="text-column col-lg-6 col-md-6 col-sm-12 order-2">
+                                <div class="text-column ">
                                     <h4>Benefits of Service</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do ei usmod tem incididunt. enim ad minim veniam, quis nostrud exer citation ullamco laboris nisiut aliquip ex commodo consequat duis aute.</p>
-                                    <ul class="list-style-one">
-                                        <li>Quis nostrud exer citation.</li>
-                                        <li>Exercitation ullamco laboris nis.</li>
-                                        <li>Commodo consequat duis autex.</li>
-                                    </ul>
+                                    <p><?php echo $result['benefits'];?></p>
+                                  
                                 </div>
-                                <div class="image-column col-lg-6 col-md-6 col-sm-12">
-                                    <figure class="image"><a href="../images/resource/post-img-2.jpg" class="lightbox-image" data-fancybox="images"><img src="../images/resource/post-img-2.jpg" alt=""></a></figure>
-                                </div>
+                             
                             </div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do ei usmod tem incididunt. enim ad minim veniam, quis nostrud exer citation ullamco laboris nisiut aliquip ex commodo consequat duis aute. irure dolor. excepteur sint occaecat cupidatat non proident.</p>
-                            <p>Sunt in culpa qui officia deserunt mollit anim est laborum. Sed perspiciatis unde omnis iste natus error sit volup  tatem accusantium dolore mque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore.enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
-                            <h4>Why Choose This Service</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do ei usmod tem incididunt. enim ad minim veniam, quis nostrud exer citation ullamco laboris nisiut aliquip ex commodo consequat duis aute. irure dolor. excepteur sint occaecat cupidatat non proident.</p>
-                            <div class="feature-box row">
-                                <!-- Feaute Block -->
-                                <div class="feature-block col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner">
-                                        <div class="icon-box"><span class="flaticon-wallet"></span></div>
-                                        <h3><a href="#">Compatitive Price</a></h3>
-                                        <div class="text">Excepteur sint ocaecat cupidat non proident suntculpa officia.</div>
-                                    </div>
-                                </div>
-
-                                <!-- Feaute Block -->
-                                <div class="feature-block col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner">
-                                        <div class="icon-box"><span class="flaticon-trolley"></span></div>
-                                        <h3><a href="#">Quick Delivery</a></h3>
-                                        <div class="text">Excepteur sint ocaecat cupidat non proident suntculpa officia.</div>
-                                    </div>
-                                </div>
-
-                                <!-- Feaute Block -->
-                                <div class="feature-block col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner">
-                                        <div class="icon-box"><span class="flaticon-rule-1"></span></div>
-                                        <h3><a href="#">Quality Product</a></h3>
-                                        <div class="text">Excepteur sint ocaecat cupidat non proident suntculpa officia.</div>
-                                    </div>
-                                </div>
-
-                                <!-- Feaute Block -->
-                                <div class="feature-block col-lg-6 col-md-6 col-sm-12">
-                                    <div class="inner">
-                                        <div class="icon-box"><span class="flaticon-worker-2"></span></div>
-                                        <h3><a href="#">Professional Team</a></h3>
-                                        <div class="text">Excepteur sint ocaecat cupidat non proident suntculpa officia.</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>Sunt in culpa qui officia deserunt mollit anim est laborum. Sed perspiciatis unde omnis iste natus error sit volup  tatem accusantium dolore mque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore.enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                         
                         </div>
                     </div><!-- Service Detail -->
                 </div>
@@ -124,36 +82,25 @@
                             </ul>
                         </div>
 
-                        <!--Brochure-->
-                        <div class="sidebar-widget links-box">
-                            <div class="brochure-link">
-                                <span class="icon flaticon-pdf"></span>
-                                <h5><a href="#">Download.pdf from here</a></h5>
-                                <span class="cat">Marketing Brochure</span>
-                            </div>
-
-                            <div class="brochure-link">
-                                <span class="icon flaticon-pdf"></span>
-                                <h5><a href="#">Download.pdf from here</a></h5>
-                                <span class="cat">Marketing Brochure</span>
-                            </div>
-                        </div>
-
-
-                        <!-- Brochure -->
                         <div class="sidebar-widget brochure">
                             <div class="brochure-box">
                                 <h6>Need Help<span>?</span></h6>
-                                <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia. deserunt mollit.</p>
+                               
                                 <ul class="info-box">
-                                    <li><span class="icon fa fa-envelope"></span> <a href="mailto:hello@example.com">hello@example.com</a></li>
-                                    <li><a href="tel:(0251)2353256"><span class="icon fa fa-phone"></span> (0251) 235 3256</a></li>
+                                    <li><span class="icon fa fa-envelope"></span> <a href="#">hydrotherapyservicesltd@gmail.com</a></li>
+                                    <li><a href="#"><span class="icon fa fa-phone"></span> 0703 295 3246, 0806 227 3384</a></li>
                                 </ul>
-                                <a href="contact.php" class="theme-btn btn-style-one">Contact Us</a>
+                                <a href="../contact/contact.php" class="theme-btn btn-style-one">Contact Us</a>
                             </div>
                         </div>
                     </aside>
                 </div>
+                <?php } ?>
+                <?php } else { ?>
+                    <div class="col-md-12">
+                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>

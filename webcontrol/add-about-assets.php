@@ -1,49 +1,79 @@
 <?php
-session_start();
+
 include 'header.php';
 
 if (isset($_POST['add_about'])) {
     $video_link = $_POST['video_link'];
+    
+    // Upload first image
     if (isset($_FILES['image']['name'])) {
-        $image_name = $_FILES['image']['name'];
-        if ($image_name != "") {
+        $image_name1 = $_FILES['image']['name'];
+        if ($image_name1 != "") {
             // Autorename image
             // get the extension of image
-            $tmp = explode('.', $image_name);
+            $tmp = explode('.', $image_name1);
             $ext = end($tmp);
-
             // rename image
-            $image_name = "about_" . rand(000, 999) . '.' . $ext;
-            $source_path = $_FILES['image']['tmp_name'];
-            $destination_path = APPROOT . '/assets/about_image/' . $image_name;
+            $image_name1 = "about_" . rand(000, 999) . '.' . $ext;
+            $source_path1 = $_FILES['image']['tmp_name'];
+            $destination_path1 = APPROOT . '/assets/about_image/' . $image_name1;
             // upload image 
-            $upload = move_uploaded_file($source_path, $destination_path);
-
+            $upload1 = move_uploaded_file($source_path1, $destination_path1);
             // Log upload status
-            if ($upload) {
-                $stmt = $conn->prepare("INSERT INTO about_assets (image, video_link) VALUES (?, ?)");
-                $stmt->bind_param('ss', $image_name, $video_link);
-
-                if ($stmt->execute()) {
-
-                    header('Location: ' . ADMINURL . 'about-assets');
-                    $_SESSION['Add'] = '<div class="alert alert-success">Added Successfully</div>';
-                    exit;
-                } else {
-                    $_SESSION['Add'] = '<div class="alert alert-danger">Failed to Add</div>';
-                    header('Location: ' . ADMINURL . 'add-about-assets');
-                    exit;
-                }
+            if (!$upload1) {
+                // Error handling for file upload failure
+                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image1</div>';
+                error_log("Failed to upload image1: " . $source_path1); // Log the source path of the failed image upload
+                header('Location: ' . ADMINURL . 'add-about-assets');
+                exit;
             }
+        }
+    }
+    
+    // Upload second image
+    if (isset($_FILES['image_two']['name'])) {
+        $image_name2 = $_FILES['image_two']['name'];
+        if ($image_name2 != "") {
+            // Autorename image
+            // get the extension of image
+            $tmp = explode('.', $image_name2);
+            $ext = end($tmp);
+            // rename image
+            $image_name2 = "about_" . rand(000, 999) . '.' . $ext;
+            $source_path2 = $_FILES['image_two']['tmp_name'];
+            $destination_path2 = APPROOT . '/assets/about_image/' . $image_name2;
+            // upload image 
+            $upload2 = move_uploaded_file($source_path2, $destination_path2);
+            // Log upload status
+            if (!$upload2) {
+                // Error handling for file upload failure
+                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image_two</div>';
+                error_log("Failed to upload image_two: " . $source_path2); // Log the source path of the failed image upload
+                header('Location: ' . ADMINURL . 'add-about-assets');
+                exit;
+            }
+        }
+    }
+    
+    // Insert data into the database
+    if ($stmt = $conn->prepare("INSERT INTO about_assets (image, image_two, video_link) VALUES (?, ?, ?)")) {
+        $stmt->bind_param('sss', $image_name1, $image_name2, $video_link);
+        if ($stmt->execute()) {
+            header('Location: ' . ADMINURL . 'about-assets');
+            $_SESSION['Add'] = '<div class="alert alert-success">Added Successfully</div>';
+            exit;
         } else {
-            // Error handling for file upload failure
-            $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image</div>';
-            error_log("Failed to upload image: " . $source_path); // Log the source path of the failed image upload
+            $_SESSION['Add'] = '<div class="alert alert-danger">Failed to Add</div>';
             header('Location: ' . ADMINURL . 'add-about-assets');
             exit;
         }
+    } else {
+        $_SESSION['Add'] = '<div class="alert alert-danger">Database Error</div>';
+        header('Location: ' . ADMINURL . 'add-about-assets');
+        exit;
     }
 }
+
 
 ?>
 
@@ -89,6 +119,11 @@ if (isset($_POST['add_about'])) {
                                         <img src="" alt="" width="100px"><br>
                                         <label for="image">Image</label>
                                         <input id="image" class="form-control" name="image" type="file">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <img src="" alt="" width="100px"><br>
+                                        <label for="image">Image two</label>
+                                        <input id="image" class="form-control" name="image_two" type="file">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="video_link">Video Link</label>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'header.php';
 
 if (isset($_GET['view'])) {
@@ -54,6 +54,16 @@ if (isset($_GET['view'])) {
                                                         <?php if (!empty($result['image']) && $result['image'] !== './assets/home_image/') { ?>
                                                             <span class="client"><img
                                                                     src="<?php echo ABOUTURL . $result['image'] ?>" width="150"
+                                                                    alt="About Asset image"></span>
+                                                        <?php } ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Image 2</th>
+                                                    <td>
+                                                        <?php if (!empty($result['image_two']) && $result['image'] !== './assets/home_image/') { ?>
+                                                            <span class="client"><img
+                                                                    src="<?php echo ABOUTURL . $result['image_two'] ?>" width="150"
                                                                     alt="About Asset image"></span>
                                                         <?php } ?>
                                                     </td>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'header.php';
 
 $stmt = $conn->prepare("SELECT * FROM clients ORDER BY created_at");

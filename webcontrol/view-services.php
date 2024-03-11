@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'header.php';
 
 if (isset($_GET['view'])) {
@@ -71,6 +71,14 @@ if (isset($_GET['view'])) {
                                                     <td>
                                                         <span class="client">
                                                             <?php echo $result['body'] ?>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Benefits of Service</th>
+                                                    <td>
+                                                        <span class="client">
+                                                            <?php echo $result['benefits'] ?>
                                                         </span>
                                                     </td>
                                                 </tr>

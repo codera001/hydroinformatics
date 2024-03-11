@@ -1,4 +1,7 @@
-<?php require '../inc/header.php';?>
+<?php require '../inc/header.php';
+$stmt = $conn->prepare("SELECT * FROM equipments ORDER BY created_at");
+$stmt->execute();
+$results = $stmt->get_result();?>
 
         <!-- Sticky Header  -->
         <div class="sticky-header">
@@ -53,8 +56,8 @@
     <div class="sidebar-page-container">
         <div class="auto-container">
             <div class="shop-upper-box clearfix">
-                <div class="items-label pull-left">Showing <span>1-9 of 20</span> Results</div>
-                <div class="sort-by pull-right">
+                <!-- <div class="items-label pull-left">Showing <span>1-9 of 20</span> Results</div> -->
+                <!-- <div class="sort-by pull-right">
                     <select class="custom-select-box">
                         <option>Default Sorting</option>
                         <option>Price: Lowest First</option>
@@ -62,263 +65,54 @@
                         <option>Ascending</option>
                         <option>Descending</option>
                     </select>
-                </div>
+                </div> -->
             </div>
 
             <div class="row clearfix">
                 <!--Content Side-->
-                <div class="content-side col-xl-9 col-lg-8 col-md-12 order-2">
+                <div class="content-side col-xl-12 col-lg-12 col-md-12 order-2">
                     <div class="our-shop">
                         <div class="row clearfix w-100">
+                          
                             <!--Shop Item-->
+                            <?php if ($results->num_rows > 0) {
+                            foreach ($results as $result) { ?>
                             <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
+                           
                                 <div class="inner-box">
                                     <div class="image">
-                                        <img src="../images/resource/products/1.jpg" alt="" />
-                                        <div class="overlay-box">
+                                        <img src="../webcontrol/assets/equip_image/<?php echo $result['image'];?>" alt="" />
+                                        <!-- <div class="overlay-box">
                                             <ul class="option-box">
                                                 <li><a href="#"><span class="flaticon-heart"></span></a></li>
                                                 <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/1.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
+                                                <li><a href="../webcontrol/assets/equip_image/<?php echo $result['image'];?>" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
                                             </ul>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="lower-content">
-                                        <h3><a href="shop-single.html">Heavy Drill Machine</a></h3>
+                                        <h3><a href="shop-single.html"><?php echo $result['title'];?></a></h3>
                                        
                                     </div>
                                 </div>
                             </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/2.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/2.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Electric Circular Saws</a></h3>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/3.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/3.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Hand Drill Machine</a></h3>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/4.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/4.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Construction Helmet</a></h3>
-                                     
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/5.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/5.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Blue Work Gloves</a></h3>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/6.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/6.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Reolink Solar Panel</a></h3>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/7.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/7.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Garden Tool</a></h3>
-                                      
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/8.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/8.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Hand Drill Machine</a></h3>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/9.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/9.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Pocket Hand Saw</a></h3>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/10.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/10.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Table Hand Saw</a></h3>
-                                     
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/11.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/11.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Work Hand Gloves</a></h3>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Shop Item-->
-                            <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="../images/resource/products/12.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <ul class="option-box">
-                                                <li><a href="#"><span class="flaticon-heart"></span></a></li>
-                                                <li><a href="#"><span class="flaticon-bag-1"></span></a></li>
-                                                <li><a href="images/resource/products/12.jpg" class="lightbox-image" data-fancybox="products"><span class="flaticon-search-1"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="shop-single.html">Hand Polishing Machine</a></h3>
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <?php } ?>
+                <?php } else { ?>
+                    <div class="col-md-12">
+                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
+                    </div>
+                <?php } ?>
+                         
 
                         <!--Styled Pagination-->
-                        <ul class="styled-pagination text-center">
+                        <!-- <ul class="styled-pagination text-center">
                             <li><a href="#" class="active">1</a></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#"><span class="fa fa-angle-right"></span></a></li>
-                        </ul>                
+                        </ul>                 -->
                         <!--End Styled Pagination-->
+                 
                     </div>
                 </div>
                 

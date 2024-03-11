@@ -1,4 +1,8 @@
-<?php require './webcontrol/server/connection.php';?>
+<?php require './webcontrol/server/connection.php';
+$stmt = $conn->prepare("SELECT * FROM socials");
+$stmt->execute();
+$result = $stmt->get_result();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,18 +43,23 @@
                 <div class="auto-container">
                     <div class="clearfix">
                         <div class="top-left">
+                        <?php if ($result->num_rows > 0) {
+                                foreach ($result as $result_one) { ?>
                             <ul class="social-links">
-                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-dribbble"></span></a></li>
-                                <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                                <li><a href="#"><span class="fab fa-vine"></span></a></li>
+                                <li><a href="<?php echo $result_one['facebook']; ?>"><span class="fab fa-facebook-f"></span></a></li>
+                                <li><a href="<?php echo $result_one['twitter']; ?>"><span class="fab fa-twitter"></span></a></li>
+                                <li><a href="<?php echo $result_one['instagram']; ?>"><span class="fab fa-instagram"></span></a></li>
+                                <li><a href="<?php echo $result_one['linkedin']; ?>"><span class="fab fa-linkedin"></span></a></li>
+                             
                             </ul>
+                            <?php } ?>
+                            <?php } else { ?>
+                            <?php } ?>
                         </div>
 
                         <div class="top-right">
                             <!--Search Box-->
-                            <div class="dropdown search-box-outer">
+                            <!-- <div class="dropdown search-box-outer">
                                 <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
                                         class="flaticon-search-2"></span></button>
@@ -68,7 +77,7 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
 
                             <!-- Cart Btn
                         <div class="cart-btn">
@@ -121,10 +130,10 @@
                                         <li class="dropdown"><a href="./about/about">About</a>
                                             <ul>
                                                 <li><a href="./about/about">About</a></li>
-                                                <li><a href="./about/pricing">Pricing Table</a></li>
-                                                <li><a href="./about/team">Our Team</a></li>
+                                                <!-- <li><a href="./about/pricing">Pricing Table</a></li> -->
+                                                <!-- <li><a href="./about/team">Our Team</a></li> -->
                                                 <li><a href="./about/testimonials">Testimonials</a></li>
-                                                <li><a href="./about/faq">Faq's</a></li>
+                                                <!-- <li><a href="./about/faq">Faq's</a></li> -->
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="./services/more-services">Services</a>
@@ -174,7 +183,7 @@
                             <div class="outer-box clearfix">
                                 <!-- Button Box -->
                                 <div class="btn-box">
-                                    <a href="./contact/contact.php" class="theme-btn btn-style-one">Contact <i
+                                    <a href="./contact/contact" class="theme-btn btn-style-one">Contact <i
                                             class="flaticon-long-arrow-pointing-to-the-right"></i></a>
                                 </div>
                             </div>

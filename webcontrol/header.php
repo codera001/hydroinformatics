@@ -1,8 +1,14 @@
-<?php if (!isset($_SESSION['logged_in'])) {
-    header('location:index');
-    exit;
-}
+
+<?php 
+// if (!isset($_SESSION['logged_in'])) {
+//     header('location:index');
+//     exit;
+// }
 include('server/connection.php');
+if (!isLoggedIn()) {
+    header('Location: ' . ADMINURL . 'index');
+    
+ }
 ?>
 
 <!doctype html>
@@ -16,7 +22,7 @@ include('server/connection.php');
     <title>Hydroinformatics | Multi Services Limited</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/logo-2.png">
+    <link rel="icon" href="img/logo-2.png">
 
     <!-- Plugins css -->
     <link rel="stylesheet" href="./css/default-assets/mini-event-calendar.min.css">

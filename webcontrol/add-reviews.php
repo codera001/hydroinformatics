@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'header.php';
 
 if (isset($_POST['add_reviews'])) {
@@ -96,8 +96,9 @@ if (isset($_POST['add_reviews'])) {
                                         <input id="name" class="form-control" name="name" type="text" value="">
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="title">Review</label>
-                                        <input id="title" class="form-control" name="body" type="text" value="">
+                                        <label for="body">Review</label>
+                                        <textarea style="height: 100px;" id="content" name="body" cols="30" rows="10"
+                                            class="form-control editor"></textarea>
                                     </div>
 
 

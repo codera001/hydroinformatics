@@ -19,21 +19,25 @@ $stmt = $conn->prepare("SELECT * FROM services LIMIT 3");
 $stmt->execute();
 $result5 = $stmt->get_result();
 
-$stmt = $conn->prepare("SELECT * FROM projects LIMIT 1");
+$stmt = $conn->prepare("SELECT * FROM projects ORDER BY created_at LIMIT 1");
 $stmt->execute();
 $result6 = $stmt->get_result();
 
-$stmt = $conn->prepare("SELECT * FROM projects LIMIT 2 OFFSET 1");
+$stmt = $conn->prepare("SELECT * FROM projects ORDER BY created_at LIMIT 2 OFFSET 1");
 $stmt->execute();
 $result7 = $stmt->get_result();
 
-$stmt = $conn->prepare("SELECT * FROM clients");
+$stmt = $conn->prepare("SELECT * FROM clients ");
 $stmt->execute();
 $result8 = $stmt->get_result();
 
-$stmt = $conn->prepare("SELECT * FROM client_review");
+$stmt = $conn->prepare("SELECT * FROM client_review ORDER BY created_at");
 $stmt->execute();
 $result9 = $stmt->get_result();
+
+$stmt = $conn->prepare("SELECT * FROM news ORDER BY created_at LIMIT 3");
+$stmt->execute();
+$result10 = $stmt->get_result();
 
 
 
@@ -64,7 +68,7 @@ $result9 = $stmt->get_result();
                 <?php if ($result1->num_rows > 0) {
                     foreach ($result1 as $result_one) { ?>
                         <li data-transition="parallaxvertical " data-description="Slide Description" data-easein="default"
-                            data-easeout="default" data-fsmasterspeed="500" data-fsslotamount="7" data-fstransition="fade"
+                            data-easeout="default" data-fsmasterspeed="50" data-fsslotamount="7" data-fstransition="fade"
                             data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1681" data-masterspeed="default"
                             data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5=""
                             data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0"
@@ -356,7 +360,7 @@ $result9 = $stmt->get_result();
                                 <span class="icon flaticon-robot-1"></span>
                                 <h3><a href="./services/more-services"><?php echo $result_five['service_category'] ?></a></h3>
                                 <!-- <div class="text">Lorem ipsum dolor sit amet, consectetur adip isicing elit sed do.</div> -->
-                                <div class="link-box"><a href="project-planning.html">Read More</a></div>
+                                <div class="link-box"><a href="./services/more-services">Read More</a></div>
                             </div>
                         </div>
                     </div>
@@ -715,7 +719,7 @@ $result9 = $stmt->get_result();
                     <h2>Contact Us Today</h2>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form action="./webcontrol/handle-contact" method="post" id="contact_form">
                         <div class="row">
                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                 <input type="text" name="username" placeholder="Your name" required="">
@@ -729,13 +733,22 @@ $result9 = $stmt->get_result();
                                 <input type="text" name="phone" placeholder="Phone" required="">
                             </div>
 
-                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                <input type="text" name="sebsite" placeholder="Website" required="">
-                            </div>
-
                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                 <textarea name="message" placeholder="Your Massage"></textarea>
                             </div>
+                            <?php $code = rand(12345, 67890) ?>
+                                    <div class="row mb-5">
+                                        <div class="col-md-5">Anti-spam code <span class="text-danger">
+                                                <?php echo $code ?>
+                                            </span> </div>
+                                        <div class="col-md-7 ">
+                                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                                <input type="hidden" name="hide" value="<?php echo $code ?>">
+                                                <input type="text" placeholder="Enter code here" name="code"
+                                                    width="100px">
+                                            </div>
+                                        </div>
+                                    </div>
 
                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                 <button class="theme-btn btn-style-one" type="submit" name="Submit">Send
@@ -771,58 +784,37 @@ $result9 = $stmt->get_result();
 
         <div class="row">
             <!-- News BLock -->
+            <?php if ($result10->num_rows > 0) {
+                foreach ($result10 as $result_ten) { ?>
             <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
                 <div class="inner-box">
                     <div class="image-box">
-                        <figure class="image"><a href="blog-detail.html"><img src="./images/resource/news-1.jpg"
-                                    alt=""></a></figure>
+                        <figure class="image"><a href="./news/blog-grid"><img src="./webcontrol/assets/news_image/<?php echo $result_ten['image'];?>"
+                                    alt="" height="200px"></a></figure>
                     </div>
                     <div class="lower-content">
-                        <span class="date">On 26 Dec, 2018</span>
-                        <h3><a href="blog-detail.html">Ratione voluptatem sequi nesciunt neque porro quisquam
-                                est qui do lorem ipsum quia.</a></h3>
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua enim minim</div>
-                        <div class="link-box"><a href="blog-detail.html">Read More</a></div>
+                        <span class="date"><?php echo $result_ten['created_at'];?></span>
+                        <h3><a href="./news/blog-grid"><?php echo $result_ten['title'];?></a></h3>
+                        <div class="text">
+                        <?php
+                    $body_without_tags = strip_tags($result_ten['body']); // Remove HTML tags from the body
+    $words = str_word_count($body_without_tags, 1); // Count words in the stripped body
+    $limitedWords = implode(' ', array_slice($words, 0, 20)); // Get the first 20 words
+    echo $limitedWords;
+?>
+
+                     </div>
+                        <div class="link-box"><a href="./news/blog-grid">Read More</a></div>
                     </div>
                 </div>
             </div>
 
-            <!-- News BLock -->
-            <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><a href="blog-detail.html"><img src="./images/resource/news-2.jpg"
-                                    alt=""></a></figure>
-                    </div>
-                    <div class="lower-content">
-                        <span class="date">On 26 Dec, 2018</span>
-                        <h3><a href="blog-detail.html">Consectetur adipisci velit sed quia non numquam eius modi
-                                tempora incidunt labore dolore magnam.</a></h3>
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua enim minim</div>
-                        <div class="link-box"><a href="blog-detail.html">Read More</a></div>
-                    </div>
+            <?php } ?>
+             <?php } else { ?>
+                <div class="col-md-12">
+                    <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
                 </div>
-            </div>
-
-            <!-- News BLock -->
-            <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><a href="blog-detail.html"><img src="./images/resource/news-3.jpg"
-                                    alt=""></a></figure>
-                    </div>
-                    <div class="lower-content">
-                        <span class="date">On 26 Dec, 2018</span>
-                        <h3><a href="blog-detail.html">Sequi nesciunt neque porro quisquam est qui do lorem
-                                ipsum quia sit amet consectetur adipisci velit.</a></h3>
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua enim minim</div>
-                        <div class="link-box"><a href="blog-detail.html">Read More</a></div>
-                    </div>
-                </div>
-            </div>
+             <?php } ?>
         </div>
     </div>
 </section>

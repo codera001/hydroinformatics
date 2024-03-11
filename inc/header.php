@@ -1,4 +1,9 @@
-<?php require '../webcontrol/server/connection.php';?>
+<?php require '../webcontrol/server/connection.php';
+
+$stmt = $conn->prepare("SELECT * FROM socials");
+$stmt->execute();
+$result = $stmt->get_result();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,18 +37,23 @@
             <div class="auto-container">
                 <div class="clearfix">
                     <div class="top-left">
+                    <?php if ($result->num_rows > 0) {
+                                foreach ($result as $result_one) { ?>
                         <ul class="social-links">
-                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-dribbble"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            <li><a href="#"><span class="fab fa-vine"></span></a></li>
+                        <li><a href="<?php echo $result_one['facebook']; ?>"><span class="fab fa-facebook-f"></span></a></li>
+                                <li><a href="<?php echo $result_one['twitter']; ?>"><span class="fab fa-twitter"></span></a></li>
+                                <li><a href="<?php echo $result_one['instagram']; ?>"><span class="fab fa-instagram"></span></a></li>
+                                <li><a href="<?php echo $result_one['linkedin']; ?>"><span class="fab fa-linkedin"></span></a></li>
+                            <!-- <li><a href="#"><span class="fab fa-vine"></span></a></li> -->
                         </ul>
+                        <?php } ?>
+                            <?php } else { ?>
+                            <?php } ?>
                     </div>
 
                     <div class="top-right">
                         <!--Search Box-->
-                        <div class="dropdown search-box-outer">
+                        <!-- <div class="dropdown search-box-outer">
                             <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flaticon-search-2"></span></button>
                             <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
                                 <li class="panel-outer">
@@ -57,18 +67,19 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
 
                         <!-- Cart Btn -->
-                        <div class="cart-btn">
+                        <!-- <div class="cart-btn">
                             <a href="shopping-cart.html" class="theme-btn"><span class="flaticon-bag-2"></span></a>
-                        </div>
+                        </div> -->
 
                         <!-- Info List -->
                         <ul class="info-list">
-                            <li><i class="flaticon-clock-circular-outline"></i> Mon - Fri:  9.00 - 18.00</li>
-                            <li><i class="flaticon-envelope-of-white-paper"></i> <a href="mailto:info@example.com">info@example.com</a></li>
-                        </ul>
+                                <li><i class="flaticon-telephone"></i> 0703 295 3246, 0806 227 3384</li>
+                                <li><i class="flaticon-envelope-of-white-paper"></i> <a
+                                        href="mailto:info@example.com">hydrotherapyservicesltd@gmail.com</a></li>
+                            </ul>
                     </div>
                 </div>
             </div>
@@ -106,31 +117,31 @@
                                         <li class="dropdown"><a href="../about/about">About</a>
                                             <ul>
                                                 <li><a href="../about/about">About</a></li>
-                                                <li><a href="../about/pricing">Pricing Table</a></li>
-                                                <li><a href="../about/team">Our Team</a></li>
+                                                <!-- <li><a href="../about/pricing">Pricing Table</a></li> -->
+                                                <!-- <li><a href="../about/team">Our Team</a></li> -->
                                                 <li><a href="../about/testimonials">Testimonials</a></li>
-                                                <li><a href="../about/faq">Faq's</a></li>
+                                                <!-- <li><a href="../about/faq">Faq's</a></li> -->
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="../services/more-services">Services</a>
                                             <ul>
-                                                <li><a href="pipeline-route">Pipeline Route Survey</a></li>
-                                                <li><a href="geophysical">Geophysical Survey</a></li>
-                                                <li><a href="geo-technical">Geotechnical Engineering</a></li>
-                                                <li><a href="2d-seismic">2D Seismic Survey</a></li>
-                                                <li><a href="dredge">Dredge Monitoring and Supervision.</a></li>
+                                                <li><a href="../services/pipeline-route">Pipeline Route Survey</a></li>
+                                                <li><a href="../services/geophysical">Geophysical Survey</a></li>
+                                                <li><a href="../services/geo-technical">Geotechnical Engineering</a></li>
+                                                <li><a href="../services/2d-seismic">2D Seismic Survey</a></li>
+                                                <li><a href="../services/dredge">Dredge Monitoring and Supervision.</a></li>
                                 <li><a href="rig-move"> Rig Move and Rig Positioning.</a></li>
-                                                <li><a href="cable-route">Cable Route Survey</a></li>
-                                                <li><a href="engineering-sup">Engineering Support</a></li>
-                                                <li><a href="rescue">Search and Rescue Operation</a></li>
-                                                <li><a href="environmental">Environmental Impact Assessment</a></li>
-                                                <li><a href="geographic">Geographic Information System</a></li>
-                                                <li><a href="geodetic">Topo-Geodetic Survey</a></li>
-                                                <li><a href="hydrographic">Hydrographic Survey</a></li>
-                                                <li><a href="bathy">Bathymetric Survey and Mapping</a></li>
-                                                <li><a href="rov-survey">ROV Survey and Positioning.</a></li>
-                                                <li><a href="auv-survey">AUV Survey and Positioning.</a></li>
-                                                <li><a href="dive-support">Dive Support.</a></li>
+                                                <li><a href="../services/cable-route">Cable Route Survey</a></li>
+                                                <li><a href="../services/engineering-sup">Engineering Support</a></li>
+                                                <li><a href="../services/rescue">Search and Rescue Operation</a></li>
+                                                <li><a href="../services/environmental">Environmental Impact Assessment</a></li>
+                                                <li><a href="../services/geographic">Geographic Information System</a></li>
+                                                <li><a href="../services/geodetic">Topo-Geodetic Survey</a></li>
+                                                <li><a href="../services/hydrographic">Hydrographic Survey</a></li>
+                                                <li><a href="../services/bathy">Bathymetric Survey and Mapping</a></li>
+                                                <li><a href="../services/rov-survey">ROV Survey and Positioning.</a></li>
+                                                <li><a href="../services/auv-survey">AUV Survey and Positioning.</a></li>
+                                                <li><a href="../services/dive-support">Dive Support.</a></li>
                                             </ul>
                                         </li>
                                         <li class=""><a href="../projects/projects">Projects</a>
@@ -158,7 +169,7 @@
                         <div class="outer-box clearfix">
                             <!-- Button Box -->
                             <div class="btn-box">
-                                <a href="../contact/contact.php" class="theme-btn btn-style-one">Contact <i class="flaticon-long-arrow-pointing-to-the-right"></i></a>
+                                <a href="../contact/contact" class="theme-btn btn-style-one">Contact <i class="flaticon-long-arrow-pointing-to-the-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -172,7 +183,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="index.html" title=""><img src="../images/logo-small.png" alt="" title=""></a>
+                    <a href="#" title=""><img src="../images/logo-2.png" alt="" title="" width="70px">Hyrdroinformatics</a>
                 </div>
                 <!--Right Col-->
                 <div class="pull-right">

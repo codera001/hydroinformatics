@@ -1,68 +1,96 @@
 <?php
-session_start();
 include 'header.php';
 $id = $_GET['update'];
- $current_image ='';
-if (isset($_POST['update_about'])) {
-    $video_link = $_POST['video_link'];
-  
+function executeUpdateAbout($conn, $image_name1, $image_name2, $video_link, $id)
+{
+    if ($stmt = $conn->prepare("UPDATE about_assets SET image = ?, image_two = ?, video_link = ? WHERE id = ?")) {
+        $stmt->bind_param('ssss', $image_name1, $image_name2, $video_link, $id);
+        return $stmt->execute();
+    }
+}
 
+if (isset($_POST['update_about'])) {
+
+    $stmt = $conn->prepare("SELECT image, image_two FROM about_assets WHERE id = ?");
+    $stmt->bind_param('s', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $current_image = $row['image'];
+    $current_image2 = $row['image_two'];
+
+    $video_link = $_POST['video_link'];
+
+    // Upload first image
     if (isset($_FILES['image']['name'])) {
-        $image_name = $_FILES['image']['name'];
-        if ($image_name != "") {
+        $image_name1 = $_FILES['image']['name'];
+        if ($image_name1 != "") {
             // Autorename image
             // get the extension of image
-            $tmp = explode('.', $image_name);
+            $tmp = explode('.', $image_name1);
             $ext = end($tmp);
-
             // rename image
-            $image_name = "about_" . rand(000, 999) . '.' . $ext;
-            $source_path = $_FILES['image']['tmp_name'];
-            $destination_path = APPROOT . '/assets/about_image/' . $image_name;
+            $image_name1 = "about_" . rand(000, 999) . '.' . $ext;
+            $source_path1 = $_FILES['image']['tmp_name'];
+            $destination_path1 = APPROOT . '/assets/about_image/' . $image_name1;
             // upload image 
-            $upload = move_uploaded_file($source_path, $destination_path);
-            
-            //  remove current image
-            // $remove_path =  APPROOT . '/assets/service_image/' . $current_image;
-            // $remove = unlink($remove_path);
-            //   check whether image is removed and if removed or not 
-            //  if failed to remove then display message and stop the process
-            // if($remove == false ){
-            //     $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current image</div>";
-            //     die(); stop the process 
-            // } 
+            $upload1 = move_uploaded_file($source_path1, $destination_path1);
             // Log upload status
-            if($upload) {
-                $stmt = $conn->prepare("UPDATE about_assets SET  image = ?, video_link = ? WHERE id = ?
-                ");
-                $stmt->bind_param('sss',  $image_name, $video_link, $id);
-                
-                if ($stmt->execute()) {
-                  
-                    header('Location: ' . ADMINURL . 'update-about-assets?update=' .$id);
-                    $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
-                    exit;
-                } else {
-                    $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
-                    header('Location: ' . ADMINURL . 'update-about-assets?update=' .$id);
-
-                    exit;
-                }
+            if (!$upload1) {
+                // Error handling for file upload failure
+                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image1</div>';
+                error_log("Failed to upload image1: " . $source_path1); // Log the source path of the failed image upload
+                header('Location: ' . ADMINURL . 'add-about-assets');
+                exit;
             }
         } else {
-            $image_name = $current_image;
-            header('Location: ' . ADMINURL . 'update-about-assets?update=' .$id);
-
+            $image_name1 = $current_image1;
+            header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
             exit;
         }
-    } else{
-        $image_name = $current_image;
     }
 
+    // Upload second image
+    if (isset($_FILES['image_two']['name'])) {
+        $image_name2 = $_FILES['image_two']['name'];
+        if ($image_name2 != "") {
+            // Autorename image
+            // get the extension of image
+            $tmp = explode('.', $image_name2);
+            $ext = end($tmp);
+            // rename image
+            $image_name2 = "about_" . rand(000, 999) . '.' . $ext;
+            $source_path2 = $_FILES['image_two']['tmp_name'];
+            $destination_path2 = APPROOT . '/assets/about_image/' . $image_name2;
+            // upload image 
+            $upload2 = move_uploaded_file($source_path2, $destination_path2);
+            // Log upload status
+            if (!$upload2) {
+                // Error handling for file upload failure
+                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image_two</div>';
+                error_log("Failed to upload image_two: " . $source_path2); // Log the source path of the failed image upload
+                header('Location: ' . ADMINURL . 'add-about-assets');
+                exit;
+            }
+        } else {
+            $image_name2 = $current_image2;
+            header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
+            exit;
+        }
+    }
 
+    // Insert data into the database
+    if (executeUpdateAbout($conn, $image_name1, $image_name2, $video_link, $id)) {
+        header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
+        $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+        exit;
+    } else {
+        $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+        header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
+        exit;
+    }
 }
 ?>
-
 
 
 <div class="flapt-page-content">
@@ -80,7 +108,7 @@ if (isset($_POST['update_about'])) {
             <button style="height:40px; width:100%;" type="button" class="btn btn-rounded btn-outline-success">
                 <span class="btn-inner--text"> <a
                         href="<?php echo ADMINURL . 'view-about-assets?view=' . $id; ?>">Back</a></span>
-                       
+
             </button>
         </div>
     </header>
@@ -99,33 +127,43 @@ if (isset($_POST['update_about'])) {
 
                 if (!empty($results)) {
                     foreach ($results as $result) {
-                        $current_image = $result['image'];
+                        $current_image1 = $result['image'];
+                        $current_image2 = $result['image_two'];
                         ?>
                         <div class="col-12 box-margin">
                             <div class="card">
                                 <div class="card-body">
                                     <?php
-                                    if(isset($_SESSION['update'])){
-                                    echo $_SESSION['update'];
-                                    unset($_SESSION['update']);
+                                    if (isset($_SESSION['update'])) {
+                                        echo $_SESSION['update'];
+                                        unset($_SESSION['update']);
                                     }
                                     ?>
                                     <h4 class="card-title">Update Service</h4>
-                                    <form class="cmxform" id="signupForm" method="POST"  enctype="multipart/form-data">
+                                    <form class="cmxform" id="signupForm" method="POST" enctype="multipart/form-data">
                                         <fieldset>
-                                        <div class="form-group mb-3">
-                                                <img src="<?php echo ABOUTURL . $result['image'] ?>" alt="about asset" width="100px"><br>
+                                            <div class="form-group mb-3">
+                                                <img src="<?php echo ABOUTURL . $result['image'] ?>" alt="about asset"
+                                                    width="100px"><br>
                                                 <label for="image"></label>
                                                 <input id="image" class="form-control" name="image" type="file">
                                             </div>
-                                        
+
+                                            <div class="form-group mb-3">
+                                                <img src="<?php echo ABOUTURL . $result['image_two'] ?>" alt="about asset"
+                                                    width="100px"><br>
+                                                <label for="image"></label>
+                                                <input id="image" class="form-control" name="image_two" type="file">
+                                            </div>
+
                                             <div class="form-group mb-3">
                                                 <label for="body">Video Link</label>
-                                                <textarea style="height: 100px;" id="content" name="video_link" cols="30" rows="10"
+                                                <textarea style="height: 100px;" id="content" name="video_link" cols="30"
+                                                    rows="10"
                                                     class="form-control editor"><?php echo $result['video_link']; ?></textarea>
                                             </div>
 
-                                          
+
 
 
                                             <input class="btn btn-primary" type="submit" value="Update" name="update_about">

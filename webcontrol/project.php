@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'header.php';
 
 $stmt = $conn->prepare("SELECT * FROM projects ORDER BY created_at");

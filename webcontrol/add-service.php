@@ -1,10 +1,11 @@
 <?php
-session_start();
+
 include 'header.php';
 
 if (isset($_POST['add_service'])) {
     $service = $_POST['service'];
     $body = $_POST['body'];
+    $benefits= $_POST['benefits'];
     $category_id = rand(000, 999);
 
     if (isset($_FILES['image']['name'])) {
@@ -24,8 +25,8 @@ if (isset($_POST['add_service'])) {
 
             // Log upload status
             if ($upload) {
-                $stmt = $conn->prepare("INSERT INTO services (category_id, service_category, body, image) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param('ssss', $category_id, $service, $body, $image_name);
+                $stmt = $conn->prepare("INSERT INTO services (category_id, service_category, body, benefits, image) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param('ssss', $category_id, $service, $body, $benefits, $image_name);
 
                 if ($stmt->execute()) {
 
@@ -93,6 +94,11 @@ if (isset($_POST['add_service'])) {
                                     <div class="form-group mb-3">
                                         <label for="body">Content</label>
                                         <textarea style="height: 100px;" id="content" name="body" cols="30" rows="10"
+                                            class="form-control editor"></textarea>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="body">Benefits of Service</label>
+                                        <textarea style="height: 100px;" id="content" name="benefits" cols="30" rows="10"
                                             class="form-control editor"></textarea>
                                     </div>
 

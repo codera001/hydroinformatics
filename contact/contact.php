@@ -1,4 +1,7 @@
-<?php require '../inc/header.php';?>
+<?php require '../inc/header.php';
+$stmt = $conn->prepare("SELECT * FROM socials");
+$stmt->execute();
+$result = $stmt->get_result();?>
 
         <!-- Sticky Header  -->
         <div class="sticky-header">
@@ -91,12 +94,17 @@
                 <!-- Info Box -->
                 <div class="contact-info-box col-lg-3 col-md-6 col-sm-12">
                     <div class="inner">
+                    <?php if ($result->num_rows > 0) {
+                                foreach ($result as $result_one) { ?>
                         <ul class="social-icon-two">
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                            <li><a href="#"><span class="fab fa-dribbble"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                            <li><a href="<?php echo $result_one['instagram']; ?>"><span class="fab fa-instagram"></span></a></li>
+                            <li><a href="<?php echo $result_one['facebook']; ?>"><span class="fab fa-facebook-f"></span></a></li>
+                            <li><a href="<?php echo $result_one['linkedin']; ?>"><span class="fab fa-linkedin"></span></a></li>
+                            <li><a href="<?php echo $result_one['twitter']; ?>"><span class="fab fa-twitter"></span></a></li>
                         </ul>
+                        <?php } ?>
+                            <?php } else { ?>
+                            <?php } ?>
                     </div>
                 </div>
             </div>
@@ -114,7 +122,7 @@
                 </div>
 
                 <div class="contact-form dark">
-                    <form method="post" action="sendemail.php" id="contact-form">
+                    <form method="post" action="../webcontrol/handle-contact" id="contact-form">
                         <div class="row">
                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                 <input type="text" name="username" placeholder="Your name" required="">
@@ -128,13 +136,24 @@
                                 <input type="text" name="phone" placeholder="Phone" required="">
                             </div>
 
-                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                <input type="text" name="website" placeholder="Website" required="">
-                            </div>
+                           
 
                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                 <textarea name="message" placeholder="Your Massage" required=""></textarea>
                             </div>
+                            <?php $code = rand(12345, 67890) ?>
+                                    <div class="row">
+                                        <div class="col-md-5">Anti-spam code <span class="text-danger">
+                                                <?php echo $code ?>
+                                            </span> </div>
+                                        <div class="col-md-7 ">
+                                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                                <input type="hidden" name="hide" value="<?php echo $code ?>">
+                                                <input type="text" placeholder="Enter code here" name="code"
+                                                    width="100px">
+                                            </div>
+                                        </div>
+                                    </div>
                             
                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                 <button class="theme-btn btn-style-one" type="submit" name="Submit">Send Message</button>
