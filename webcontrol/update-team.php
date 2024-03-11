@@ -2,65 +2,57 @@
 
 include 'header.php';
 $id = $_GET['update'];
- $current_image ='';
+
+function executeUpdateteam($conn, $title, $name, $image_name, $id)
+{
+    $stmt = $conn->prepare("UPDATE team SET title = ?, name = ?, image = ? WHERE id = ?");
+    $stmt->bind_param('ssss', $title, $name, $image_name, $id);
+    return $stmt->execute();
+}
 if (isset($_POST['update_team'])) {
-    $name = $_POST['name'];
+    $stmt = $conn->prepare("SELECT image FROM team WHERE id = ?");
+    $stmt->bind_param('s', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $current_image = $row['image'];
     $title = $_POST['title'];
-  
+    $name = $_POST['name'];
 
     if (isset($_FILES['image']['name'])) {
         $image_name = $_FILES['image']['name'];
-        if ($image_name != "") {
+        if (!empty($image_name)) {
             // Autorename image
-            // get the extension of image
-            $tmp = explode('.', $image_name);
-            $ext = end($tmp);
-
-            // rename image
+            $ext = pathinfo($image_name, PATHINFO_EXTENSION);
             $image_name = "team_" . rand(000, 999) . '.' . $ext;
             $source_path = $_FILES['image']['tmp_name'];
             $destination_path = APPROOT . '/assets/team_image/' . $image_name;
-            // upload image 
             $upload = move_uploaded_file($source_path, $destination_path);
-            
-            //  remove current image
-            // $remove_path =  APPROOT . '/assets/service_image/' . $current_image;
-            // $remove = unlink($remove_path);
-            //   check whether image is removed and if removed or not 
-            //  if failed to remove then display message and stop the process
-            // if($remove == false ){
-            //     $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current image</div>";
-            //     die(); stop the process 
-            // } 
-            // Log upload status
-            if($upload) {
-                $stmt = $conn->prepare("UPDATE team SET name = ?, title = ?, image = ? WHERE id = ?
-                ");
-                $stmt->bind_param('ssss',$name, $title, $image_name, $id);
-                
-                if ($stmt->execute()) {
-                  
-                    header('Location: ' . ADMINURL . 'update-team?update=' .$id);
-                    $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
-                    exit;
-                } else {
-                    $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
-                    header('Location: ' . ADMINURL . 'update-team?update=' .$id);
-
-                    exit;
-                }
-            }
         } else {
             $image_name = $current_image;
-            header('Location: ' . ADMINURL . 'update-team?update=' .$id);
-
-            exit;
+            if (executeUpdateteam($conn, $title, $name, $image_name, $id)) {
+                header('Location: ' . ADMINURL . 'update-team?update=' .$id);
+                $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+                exit;
+            } else {
+                $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+                header('Location: ' . ADMINURL . 'update-team?update=' .$id);
+                exit;
+            }
         }
-    } else{
+    } else {
         $image_name = $current_image;
     }
 
-
+    if (executeUpdateteam($conn, $title, $name, $image_name, $id)) {
+        header('Location: ' . ADMINURL . 'update-team?update=' .$id);
+                    $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+        exit;
+    } else {
+        $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+                    header('Location: ' . ADMINURL . 'update-team?update=' .$id);
+        exit;
+    }
 }
 ?>
 
@@ -100,11 +92,11 @@ if (isset($_POST['update_team'])) {
 
                 if (!empty($results)) {
                     foreach ($results as $result) {
-                        $current_image = $result['image'];
+                      
                         ?>
                         <div class="col-12 box-margin">
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-name">
                                     <?php
                                     if(isset($_SESSION['update'])){
                                     echo $_SESSION['update'];
@@ -121,12 +113,12 @@ if (isset($_POST['update_team'])) {
                                             </div>
                                         
                                             <div class="form-group mb-3">
-                                                <label for="body">Name</label>
+                                                <label for="name">Name</label>
                                                 <textarea style="height: 100px;" id="content" name="name" cols="30" rows="10"
                                                     class="form-control editor"><?php echo $result['name']; ?></textarea>
                                             </div>
                                             <div class="form-group mb-3">
-                                                <label for="body">Title</label>
+                                                <label for="name">Title</label>
                                                 <textarea style="height: 100px;" id="content" name="title" cols="30" rows="10"
                                                     class="form-control editor"><?php echo $result['title']; ?></textarea>
                                             </div>
@@ -169,6 +161,6 @@ if (isset($_POST['update_team'])) {
             });
     });
 </script>
-</body>
+</name>
 
 </html>

@@ -6,19 +6,20 @@ function executeUpdateAbout($conn, $image_name1, $image_name2, $video_link, $id)
     if ($stmt = $conn->prepare("UPDATE about_assets SET image = ?, image_two = ?, video_link = ? WHERE id = ?")) {
         $stmt->bind_param('ssss', $image_name1, $image_name2, $video_link, $id);
         return $stmt->execute();
-    }
+        
+    } 
+    
+    
 }
 
 if (isset($_POST['update_about'])) {
-
     $stmt = $conn->prepare("SELECT image, image_two FROM about_assets WHERE id = ?");
     $stmt->bind_param('s', $id);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    $current_image = $row['image'];
+    $current_image1 = $row['image'];
     $current_image2 = $row['image_two'];
-
     $video_link = $_POST['video_link'];
 
     // Upload first image
@@ -38,15 +39,15 @@ if (isset($_POST['update_about'])) {
             // Log upload status
             if (!$upload1) {
                 // Error handling for file upload failure
-                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image1</div>';
-                error_log("Failed to upload image1: " . $source_path1); // Log the source path of the failed image upload
-                header('Location: ' . ADMINURL . 'add-about-assets');
+                $_SESSION['update'] = '<div class="alert alert-danger">Failed to upload image1</div>';
+              
+                header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
+
                 exit;
             }
         } else {
             $image_name1 = $current_image1;
-            header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
-            exit;
+         
         }
     }
 
@@ -67,15 +68,24 @@ if (isset($_POST['update_about'])) {
             // Log upload status
             if (!$upload2) {
                 // Error handling for file upload failure
-                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image_two</div>';
-                error_log("Failed to upload image_two: " . $source_path2); // Log the source path of the failed image upload
-                header('Location: ' . ADMINURL . 'add-about-assets');
+                $_SESSION['update'] = '<div class="alert alert-danger">Failed to upload image_two</div>';
+              
+                header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
+
                 exit;
             }
         } else {
             $image_name2 = $current_image2;
-            header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
-            exit;
+            if (executeUpdateAbout($conn, $image_name1, $image_name2, $video_link, $id)) {
+                header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
+                $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+                exit;
+            } else {
+                $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+                header('Location: ' . ADMINURL . 'update-about-assets?update=' . $id);
+                exit;
+            }
+           
         }
     }
 
@@ -127,8 +137,6 @@ if (isset($_POST['update_about'])) {
 
                 if (!empty($results)) {
                     foreach ($results as $result) {
-                        $current_image1 = $result['image'];
-                        $current_image2 = $result['image_two'];
                         ?>
                         <div class="col-12 box-margin">
                             <div class="card">

@@ -2,64 +2,55 @@
 
 include 'header.php';
 $id = $_GET['update'];
- $current_image ='';
+function executeUpdatehomeassets($conn, $video_link, $image_name, $id)
+{
+    $stmt = $conn->prepare("UPDATE home_assets SET video_link = ?, image = ? WHERE id = ?");
+    $stmt->bind_param('sss', $video_link, $image_name, $id);
+    return $stmt->execute();
+}
 if (isset($_POST['update_home'])) {
+    $stmt = $conn->prepare("SELECT image FROM home_assets WHERE id = ?");
+    $stmt->bind_param('s', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
     $video_link = $_POST['video_link'];
-  
+    $current_image = $row['image'];   
 
     if (isset($_FILES['image']['name'])) {
         $image_name = $_FILES['image']['name'];
-        if ($image_name != "") {
+        if (!empty($image_name)) {
             // Autorename image
-            // get the extension of image
-            $tmp = explode('.', $image_name);
-            $ext = end($tmp);
-
-            // rename image
+            $ext = pathinfo($image_name, PATHINFO_EXTENSION);
             $image_name = "home_" . rand(000, 999) . '.' . $ext;
             $source_path = $_FILES['image']['tmp_name'];
             $destination_path = APPROOT . '/assets/home_image/' . $image_name;
-            // upload image 
             $upload = move_uploaded_file($source_path, $destination_path);
-            
-            //  remove current image
-            // $remove_path =  APPROOT . '/assets/service_image/' . $current_image;
-            // $remove = unlink($remove_path);
-            //   check whether image is removed and if removed or not 
-            //  if failed to remove then display message and stop the process
-            // if($remove == false ){
-            //     $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current image</div>";
-            //     die(); stop the process 
-            // } 
-            // Log upload status
-            if($upload) {
-                $stmt = $conn->prepare("UPDATE home_assets SET  image = ?, video_link = ? WHERE id = ?
-                ");
-                $stmt->bind_param('sss',  $image_name, $video_link, $id);
-                
-                if ($stmt->execute()) {
-                  
-                    header('Location: ' . ADMINURL . 'update-home-assets?update=' .$id);
-                    $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
-                    exit;
-                } else {
-                    $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
-                    header('Location: ' . ADMINURL . 'update-home-assets?update=' .$id);
-
-                    exit;
-                }
-            }
         } else {
             $image_name = $current_image;
-            header('Location: ' . ADMINURL . 'update-home-assets?update=' .$id);
-
-            exit;
+            if (executeUpdatehomeassets($conn, $video_link, $image_name, $id)) {
+                header('Location: ' . ADMINURL . 'update-home-assets?update=' .$id);
+                $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+                exit;
+            } else {
+                // $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+                header('Location: ' . ADMINURL . 'update-home-assets?update=' .$id);
+                exit;
+            }
         }
-    } else{
+    } else {
         $image_name = $current_image;
     }
 
-
+    if (executeUpdatehomeassets($conn, $video_link, $image_name, $id)) {
+        header('Location: ' . ADMINURL . 'update-home-assets?update=' .$id);
+                    $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+        exit;
+    } else {
+        $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+                    header('Location: ' . ADMINURL . 'update-home-assets?update=' .$id);
+        exit;
+    }
 }
 ?>
 
@@ -99,7 +90,7 @@ if (isset($_POST['update_home'])) {
 
                 if (!empty($results)) {
                     foreach ($results as $result) {
-                        $current_image = $result['image'];
+                       
                         ?>
                         <div class="col-12 box-margin">
                             <div class="card">
@@ -110,7 +101,7 @@ if (isset($_POST['update_home'])) {
                                     unset($_SESSION['update']);
                                     }
                                     ?>
-                                    <h4 class="card-title">Update Service</h4>
+                                    <h4 class="card-video_link">Update Service</h4>
                                     <form class="cmxform" id="signupForm" method="POST"  enctype="multipart/form-data">
                                         <fieldset>
                                         <div class="form-group mb-3">

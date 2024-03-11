@@ -1,64 +1,56 @@
 <?php
 include 'header.php';
 $unique_id = $_GET['update'];
- $current_image ='';
+function executeUpdateCarousel($conn, $title, $body, $image_name, $unique_id)
+{
+    $stmt = $conn->prepare("UPDATE carousel_images SET title = ?, body = ?, image = ? WHERE unique_id = ?");
+    $stmt->bind_param('ssss', $title, $body, $image_name, $unique_id);
+    return $stmt->execute();
+}
 if (isset($_POST['update_carousel'])) {
+    $stmt = $conn->prepare("SELECT image FROM carousel_images WHERE unique_id = ?");
+    $stmt->bind_param('s', $unique_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $current_image = $row['image'];
     $title = $_POST['title'];
     $body = $_POST['body'];
 
     if (isset($_FILES['image']['name'])) {
         $image_name = $_FILES['image']['name'];
-        if ($image_name != "") {
+        if (!empty($image_name)) {
             // Autorename image
-            // get the extension of image
-            $tmp = explode('.', $image_name);
-            $ext = end($tmp);
-
-            // rename image
+            $ext = pathinfo($image_name, PATHINFO_EXTENSION);
             $image_name = "carousel_" . rand(000, 999) . '.' . $ext;
             $source_path = $_FILES['image']['tmp_name'];
             $destination_path = APPROOT . '/assets/carousel_image/' . $image_name;
-            // upload image 
             $upload = move_uploaded_file($source_path, $destination_path);
-            
-            //  remove current image
-            // $remove_path =  APPROOT . '/assets/carousel_image/' . $current_image;
-            // $remove = unlink($remove_path);
-            //   check whether image is removed and if removed or not 
-            //  if failed to remove then display message and stop the process
-            // if($remove == false ){
-            //     $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current image</div>";
-            //     die(); stop the process 
-            // } 
-            // Log upload status
-            if($upload) {
-                $stmt = $conn->prepare("UPDATE carousel_images SET title = ?, body = ?, image = ? WHERE unique_id = ?
-                ");
-                $stmt->bind_param('ssss',  $title, $body, $image_name, $unique_id);
-                
-                if ($stmt->execute()) {
-                  
-                    header('Location: ' . ADMINURL . 'update-services?update=' .$unique_id);
-                    $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
-                    exit;
-                } else {
-                    $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
-                    header('Location: ' . ADMINURL . 'update-services?update=' .$unique_id);
-
-                    exit;
-                }
-            }
         } else {
             $image_name = $current_image;
-            header('Location: ' . ADMINURL . 'update-services?update=' .$unique_id);
-
-            exit;
+            if (executeUpdateCarousel($conn, $title, $body, $image_name, $unique_id)) {
+                header('Location: ' . ADMINURL . 'update-carousel?update=' .$unique_id);
+                $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+                exit;
+            } else {
+                $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+                header('Location: ' . ADMINURL . 'update-carousel?update=' .$unique_id);
+                exit;
+            }
         }
-    } else{
+    } else {
         $image_name = $current_image;
     }
 
-
+    if (executeUpdateCarousel($conn, $title, $body, $image_name, $unique_id)) {
+        header('Location: ' . ADMINURL . 'update-carousel?update=' .$unique_id);
+                    $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+        exit;
+    } else {
+        $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+                    header('Location: ' . ADMINURL . 'update-carousel?update=' .$unique_id);
+        exit;
+    }
 }
 ?>
 
@@ -98,7 +90,6 @@ if (isset($_POST['update_carousel'])) {
 
                 if (!empty($results)) {
                     foreach ($results as $result) {
-                        $current_image = $result['image'];
                         ?>
                         <div class="col-12 box-margin">
                             <div class="card">

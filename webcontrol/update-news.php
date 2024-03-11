@@ -2,65 +2,56 @@
 
 include 'header.php';
 $id = $_GET['update'];
- $current_image ='';
+function executeUpdatenews($conn, $title, $body, $image_name, $id)
+{
+    $stmt = $conn->prepare("UPDATE news SET title = ?, body = ?, image = ? WHERE id = ?");
+    $stmt->bind_param('ssss', $title, $body, $image_name, $id);
+    return $stmt->execute();
+}
 if (isset($_POST['update_news'])) {
-    $body = $_POST['body'];
+    $stmt = $conn->prepare("SELECT image FROM news WHERE id = ?");
+    $stmt->bind_param('s', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
     $title = $_POST['title'];
-  
+    $body = $_POST['body'];
+    $current_image = $row['image'];   
 
     if (isset($_FILES['image']['name'])) {
         $image_name = $_FILES['image']['name'];
-        if ($image_name != "") {
+        if (!empty($image_name)) {
             // Autorename image
-            // get the extension of image
-            $tmp = explode('.', $image_name);
-            $ext = end($tmp);
-
-            // rename image
+            $ext = pathinfo($image_name, PATHINFO_EXTENSION);
             $image_name = "news_" . rand(000, 999) . '.' . $ext;
             $source_path = $_FILES['image']['tmp_name'];
             $destination_path = APPROOT . '/assets/news_image/' . $image_name;
-            // upload image 
             $upload = move_uploaded_file($source_path, $destination_path);
-            
-            //  remove current image
-            // $remove_path =  APPROOT . '/assets/service_image/' . $current_image;
-            // $remove = unlink($remove_path);
-            //   check whether image is removed and if removed or not 
-            //  if failed to remove then display message and stop the process
-            // if($remove == false ){
-            //     $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current image</div>";
-            //     die(); stop the process 
-            // } 
-            // Log upload status
-            if($upload) {
-                $stmt = $conn->prepare("UPDATE news SET  title = ?, body = ?, image = ? WHERE id = ?
-                ");
-                $stmt->bind_param('ssss', $title, $body, $image_name, $id);
-                
-                if ($stmt->execute()) {
-                  
-                    header('Location: ' . ADMINURL . 'update-news?update=' .$id);
-                    $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
-                    exit;
-                } else {
-                    $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
-                    header('Location: ' . ADMINURL . 'update-news?update=' .$id);
-
-                    exit;
-                }
-            }
         } else {
             $image_name = $current_image;
-            header('Location: ' . ADMINURL . 'update-news?update=' .$id);
-
-            exit;
+            if (executeUpdatenews($conn, $title, $body, $image_name, $id)) {
+                header('Location: ' . ADMINURL . 'update-news?update=' .$id);
+                $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+                exit;
+            } else {
+                // $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+                header('Location: ' . ADMINURL . 'update-news?update=' .$id);
+                exit;
+            }
         }
-    } else{
+    } else {
         $image_name = $current_image;
     }
 
-
+    if (executeUpdatenews($conn, $title, $body, $image_name, $id)) {
+        header('Location: ' . ADMINURL . 'update-news?update=' .$id);
+                    $_SESSION['update'] = '<div class="alert alert-success">Updated Successfully</div>';
+        exit;
+    } else {
+        $_SESSION['update'] = '<div class="alert alert-danger">Failed to Update</div>';
+                    header('Location: ' . ADMINURL . 'update-news?update=' .$id);
+        exit;
+    }
 }
 ?>
 
@@ -100,7 +91,7 @@ if (isset($_POST['update_news'])) {
 
                 if (!empty($results)) {
                     foreach ($results as $result) {
-                        $current_image = $result['image'];
+                        
                         ?>
                         <div class="col-12 box-margin">
                             <div class="card">
