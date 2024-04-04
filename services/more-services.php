@@ -67,11 +67,11 @@ $results = $stmt->get_result();
             <div class="service-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
                 <div class="inner-box">                   
                     <div class="image-box">
-                        <figure class="image"><a href="#"><img src="../webcontrol/assets/service_image/<?php echo $result['image'];?>" alt=""></a></figure>
+                        <figure class="image"><a href="service-details?view=<?php echo $result['id'] ?>"><img src="../webcontrol/assets/service_image/<?php echo $result['image'];?>" alt=""></a></figure>
                     </div>
                     <div class="lower-content">
                         <span class="icon flaticon-robot-1"></span>
-                        <h3><a href="pipeline-route"><?php echo $result['service_category'];?></a></h3>
+                        <h3><a href="service-details?view=<?php echo $result['id'] ?>"><?php echo $result['service_category'];?></a></h3>
                         <div class="text">          <?php
                     $body_without_tags = strip_tags($result['body']); // Remove HTML tags from the body
     $words = str_word_count($body_without_tags, 1); // Count words in the stripped body

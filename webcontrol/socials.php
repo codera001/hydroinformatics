@@ -47,6 +47,7 @@ $results = $stmt->get_result();
                                                 <th>X</th>
                                                 <th>LinkedIn</th>
                                                 <th>Instagram</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>

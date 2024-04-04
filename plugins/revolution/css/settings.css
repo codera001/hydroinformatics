@@ -233,8 +233,14 @@ website:   	http://www.themepunch.com
   position: relative;
   /* opacity: 0.4; */
   width: 100%;
-  background:  rgba(0,0,0,0);
+  background: #034694;
 
+}
+@media screen and (min-width:1300px){
+  .rev_slider_wrapper{
+    margin-top:10rem;
+
+  }
 }
 
 
@@ -339,6 +345,7 @@ website:   	http://www.themepunch.com
 .wpb_text_column .rev_slider .tp-mask-wrap .tp-caption,
 .wpb_text_column .rev_slider .tp-mask-wrap :last-child {
   margin-bottom: 0;
+  color:#fff !important;
 }
 .tp-svg-layer svg {
   width: 100%;

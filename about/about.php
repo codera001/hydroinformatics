@@ -103,9 +103,9 @@ $result2 = $stmt->get_result();
                     foreach ($results as $result) { ?>
                         <div class="text-layer">A</div>
                         <figure class="image-1 wow fadeInUp"><a href="../webcontrol/assets/about_image/<?php echo $result['image'];?>" class="lightbox-image" data-fancybox="images">
-                        <img src="../webcontrol/assets/about_image/<?php echo $result['image'];?>" alt=""></a></figure>
-                        <figure class="image-2 wow fadeInDown"><a href="../webcontrol/assets/about_image/<?php echo $result['image_two'];?>" class="lightbox-image" data-fancybox="images"><img src="../webcontrol/assets/about_image/<?php echo $result['image_two'];?>" alt=""></a></figure>
-                        <div class="video-link wow zoomIn"><a href="h<?php echo $result['video_link'];?>" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-play"></span></a></div>
+                        <img src="../webcontrol/assets/about_image/<?php echo $result['image'];?>" alt="" style="height:500px;"></a></figure>
+                        <figure class="image-2 wow fadeInDown"><a href="../webcontrol/assets/about_image/<?php echo $result['image_two'];?>" class="lightbox-image" data-fancybox="images"><img src="../webcontrol/assets/about_image/<?php echo $result['image_two'];?>" alt="" style="height:500px;"></a></figure>
+                     
                         <?php } ?>
                 <?php } else { ?>
                     <div class="col-md-12">
@@ -129,7 +129,7 @@ $result2 = $stmt->get_result();
                             <div class="sec-title">
                                 <h2>CORPORATE PHILOSOPHY</h2>
                             </div>
-                            <div class="text text-dark">We are an assembly of RESEARCH-ORIENTED PROFESSIONALS passionate about bringing a perfect touch of excellence to our deliverables to our clients. Our highly experienced personnel have over 15 years of world-class experience.
+                            <div class="text text-dark">We are an assembly of RESEARCH-ORIENTED PROFESSIONALS passionate about bringing a touch of excellence to our deliverables to our clients. Our highly experienced personnel have over 15 years of world-class experience.
 Hydroinformatics roadmap springs from the desire to MIGRATE from analogue system to a research- driven, technology-driven, and digitized system that modifies the existing method of project execution through a direct partnership with software and equipment manufacturers around the world. Our threefold 'therapeutic' approach include:
     <ul class="list-style-one">
                                 <li>Corporate Vision.</li>

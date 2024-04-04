@@ -42,6 +42,7 @@ $results = $stmt->get_result();
                 echo $_SESSION['delete'];
                 unset($_SESSION['delete']);
             } ?>
+            
             <div class="row">
                 <div class="col-12 box-margin">
                     <div class="card">
@@ -51,7 +52,7 @@ $results = $stmt->get_result();
                             <h6 class="card-title">Services</h6>
 
                             <button type="button" class="btn btn-rounded btn-outline-success float-end">
-                                <span class="btn-inner--text"><a href="add-home-assets">Add</a></span>
+                                <span class="btn-inner--text"><a href="add-service">Add</a></span>
                             </button><br><br><br>
 
                             <?php if ($results->num_rows > 0) { ?>

@@ -59,6 +59,36 @@ if (isset($_GET['view'])) {
                                                     </td>
                                                 </tr>
                                                 <tr>
+                                                    <th>Image2</th>
+                                                    <td>
+                                                        <?php if (!empty($result['image_two']) && $result['image_two'] !== './assets/services/') { ?>
+                                                            <span class="client"><img
+                                                                    src="<?php echo SERVICEURL . $result['image_two'] ?>" width="150"
+                                                                    alt="service image"></span>
+                                                        <?php } ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Image3</th>
+                                                    <td>
+                                                        <?php if (!empty($result['image_three']) && $result['image_three'] !== './assets/services/') { ?>
+                                                            <span class="client"><img
+                                                                    src="<?php echo SERVICEURL . $result['image_three'] ?>" width="150"
+                                                                    alt="service image"></span>
+                                                        <?php } ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Image4</th>
+                                                    <td>
+                                                        <?php if (!empty($result['image_four']) && $result['image_four'] !== './assets/services/') { ?>
+                                                            <span class="client"><img
+                                                                    src="<?php echo SERVICEURL . $result['image_four'] ?>" width="150"
+                                                                    alt="service image"></span>
+                                                        <?php } ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <th>Service</th>
                                                     <td>
                                                         <span class="client">

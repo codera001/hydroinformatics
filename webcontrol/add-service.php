@@ -3,49 +3,124 @@
 include 'header.php';
 
 if (isset($_POST['add_service'])) {
-    $service = $_POST['service'];
+    $title = $_POST['title'];
     $body = $_POST['body'];
-    $benefits= $_POST['benefits'];
-    $category_id = rand(000, 999);
-
+    
+    // Upload first image
     if (isset($_FILES['image']['name'])) {
-        $image_name = $_FILES['image']['name'];
-        if ($image_name != "") {
+        $image_name1 = $_FILES['image']['name'];
+        if ($image_name1 != "") {
             // Autorename image
             // get the extension of image
-            $tmp = explode('.', $image_name);
+            $tmp = explode('.', $image_name1);
             $ext = end($tmp);
-
             // rename image
-            $image_name = "Service_" . rand(000, 999) . '.' . $ext;
-            $source_path = $_FILES['image']['tmp_name'];
-            $destination_path = APPROOT . '/assets/service_image/' . $image_name;
+            $image_name1 = "service_" . rand(000, 999) . '.' . $ext;
+            $source_path1 = $_FILES['image']['tmp_name'];
+            $destination_path1 = APPROOT . '/assets/service_image/' . $image_name1;
             // upload image 
-            $upload = move_uploaded_file($source_path, $destination_path);
-
+            $upload1 = move_uploaded_file($source_path1, $destination_path1);
             // Log upload status
-            if ($upload) {
-                $stmt = $conn->prepare("INSERT INTO services (category_id, service_category, body, benefits, image) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param('ssss', $category_id, $service, $body, $benefits, $image_name);
-
-                if ($stmt->execute()) {
-
-                    header('Location: ' . ADMINURL . 'services');
-                    $_SESSION['Add'] = '<div class="alert alert-success">Added Successfully</div>';
-                    exit;
-                } else {
-                    $_SESSION['Add'] = '<div class="alert alert-danger">Failed to Add</div>';
-                    header('Location: ' . ADMINURL . 'add-service');
-                    exit;
-                }
+            if (!$upload1) {
+                // Error handling for file upload failure
+                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image1</div>';
+                error_log("Failed to upload image1: " . $source_path1); // Log the source path of the failed image upload
+                header('Location: ' . ADMINURL . 'add-service');
+                exit;
             }
+        }
+    }
+    
+    // Upload second image
+    if (isset($_FILES['image_two']['name'])) {
+        $image_name2 = $_FILES['image_two']['name'];
+        if ($image_name2 != "") {
+            // Autorename image
+            // get the extension of image
+            $tmp = explode('.', $image_name2);
+            $ext = end($tmp);
+            // rename image
+            $image_name2 = "service_" . rand(000, 999) . '.' . $ext;
+            $source_path2 = $_FILES['image_two']['tmp_name'];
+            $destination_path2 = APPROOT . '/assets/service_image/' . $image_name2;
+            // upload image 
+            $upload2 = move_uploaded_file($source_path2, $destination_path2);
+            // Log upload status
+            if (!$upload2) {
+                // Error handling for file upload failure
+                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image_two</div>';
+                error_log("Failed to upload image_two: " . $source_path2); // Log the source path of the failed image upload
+                header('Location: ' . ADMINURL . 'add-service');
+                exit;
+            }
+        }
+    }
+// upload third image
+    if (isset($_FILES['image_three']['name'])) {
+        $image_name3 = $_FILES['image_three']['name'];
+        if ($image_name3 != "") {
+            // Autorename image
+            // get the extension of image
+            $tmp = explode('.', $image_name3);
+            $ext = end($tmp);
+            // rename image
+            $image_name3 = "service_" . rand(000, 999) . '.' . $ext;
+            $source_path3 = $_FILES['image_three']['tmp_name'];
+            $destination_path3 = APPROOT . '/assets/service_image/' . $image_name3;
+            // upload image 
+            $upload3 = move_uploaded_file($source_path3, $destination_path3);
+            // Log upload status
+            if (!$upload3) {
+                // Error handling for file upload failure
+                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image3</div>';
+                error_log("Failed to upload image3: " . $source_path3); // Log the source path of the failed image upload
+                header('Location: ' . ADMINURL . 'add-service');
+                exit;
+            }
+        }
+    }
+
+    // image four
+    if (isset($_FILES['image_four']['name'])) {
+        $image_name4 = $_FILES['image_four']['name'];
+        if ($image_name4 != "") {
+            // Autorename image
+            // get the extension of image
+            $tmp = explode('.', $image_name4);
+            $ext = end($tmp);
+            // rename image
+            $image_name4 = "service_" . rand(000, 999) . '.' . $ext;
+            $source_path4 = $_FILES['image_four']['tmp_name'];
+            $destination_path4 = APPROOT . '/assets/service_image/' . $image_name4;
+            // upload image 
+            $upload4 = move_uploaded_file($source_path4, $destination_path4);
+            // Log upload status
+            if (!$upload4) {
+                // Error handling for file upload failure
+                $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image4</div>';
+                error_log("Failed to upload image4: " . $source_path1); // Log the source path of the failed image upload
+                header('Location: ' . ADMINURL . 'add-service');
+                exit;
+            }
+        }
+    }
+    
+    // Insert data into the database
+    if ($stmt = $conn->prepare("INSERT INTO services (title, body,image, image_two, image_three, image_four) VALUES (?, ?, ?, ?, ?, ?)")) {
+        $stmt->bind_param('ssssss',$title, $body, $image_name1, $image_name2, $image_name3, $image_name4);
+        if ($stmt->execute()) {
+            header('Location: ' . ADMINURL . 'service');
+            $_SESSION['Add'] = '<div class="alert alert-success">Added Successfully</div>';
+            exit;
         } else {
-            // Error handling for file upload failure
-            $_SESSION['Add'] = '<div class="alert alert-danger">Failed to upload image</div>';
-            error_log("Failed to upload image: " . $source_path); // Log the source path of the failed image upload
+            $_SESSION['Add'] = '<div class="alert alert-danger">Failed to Add</div>';
             header('Location: ' . ADMINURL . 'add-service');
             exit;
         }
+    } else {
+        $_SESSION['Add'] = '<div class="alert alert-danger">Database Error</div>';
+        header('Location: ' . ADMINURL . 'add-service');
+        exit;
     }
 }
 ?>
@@ -106,6 +181,21 @@ if (isset($_POST['add_service'])) {
                                         <img src="" alt="" width="100px"><br>
                                         <label for="image">Image</label>
                                         <input id="image" class="form-control" name="image" type="file">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <img src="" alt="" width="100px"><br>
+                                        <label for="image">Image2</label>
+                                        <input id="image" class="form-control" name="image_two" type="file">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <img src="" alt="" width="100px"><br>
+                                        <label for="image">Image3</label>
+                                        <input id="image" class="form-control" name="image_three" type="file">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <img src="" alt="" width="100px"><br>
+                                        <label for="image">Image4</label>
+                                        <input id="image" class="form-control" name="image_four" type="file">
                                     </div>
 
 

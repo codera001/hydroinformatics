@@ -2,6 +2,10 @@
 $stmt = $conn->prepare("SELECT * FROM socials");
 $stmt->execute();
 $result = $stmt->get_result();
+
+$stmt = $conn->prepare("SELECT * FROM services");
+$stmt->execute();
+$result3 = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -103,7 +107,7 @@ $result = $stmt->get_result();
                         <!--Info-->
                         <div class="logo-outer">
                             <div class="logo"><a href="#"><img src="images/logo-2.png" alt="" title="" width="70px"></a>
-                           <span class="title h5" style="color:#fa7720;font-weight:bolder;"> Hyrdroinformatics</span>
+                           <span class="title h5" style="color:#034694;font-weight:bolder;"> Hyrdroinformatics</span>
                             </div>
                         </div>
 
@@ -130,32 +134,26 @@ $result = $stmt->get_result();
                                         <li class="dropdown"><a href="./about/about">About</a>
                                             <ul>
                                                 <li><a href="./about/about">About</a></li>
-                                                <!-- <li><a href="./about/pricing">Pricing Table</a></li> -->
-                                                <!-- <li><a href="./about/team">Our Team</a></li> -->
+                                                <li><a href="./about/hse">HSE</a></li>
+                                                <li><a href="./about/team">Our Team</a></li>
                                                 <li><a href="./about/testimonials">Testimonials</a></li>
                                                 <!-- <li><a href="./about/faq">Faq's</a></li> -->
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="./services/more-services">Services</a>
                                         <ul>
-                                                <li><a href="./services/pipeline-route">Pipeline Route Survey</a></li>
-                                                <li><a href="./services/geophysical">Geophysical Survey</a></li>
-                                                <li><a href="./services/geo-technical">Geotechnical Engineering</a></li>
-                                                <li><a href="./services/2d-seismic">2D Seismic Survey</a></li>
-                                                <li><a href="./services/dredge">Dredge Monitoring and Supervision</a></li>
-                                              
-                                <li><a href="./services/rig-move"> Rig Move and Rig Positioning.</a></li>
-                                                <li><a href="./services/cable-route">Cable Route Survey</a></li>
-                                                <li><a href="./services/engineering-sup">Engineering Support</a></li>
-                                                <li><a href="./services/rescue">Search and Rescue Operation</a></li>
-                                                <li><a href="./services/environmental">Environmental Impact Assessment</a></li>
-                                                <li><a href="./services/geographic">Geographic Information System</a></li>
-                                                <li><a href="./services/geodetic">Topo-Geodetic Survey</a></li>
-                                                <li><a href="./services/hydrographic">Hydrographic Survey</a></li>
-                                                <li><a href="./services/bathy">Bathymetric Survey and Mapping</a></li>
-                                                <li><a href="./services/rov-survey">ROV Survey and Positioning.</a></li>
-                                                <li><a href="./services/auv-survey">AUV Survey and Positioning.</a></li>
-                                                <li><a href="./services/dive-support">Dive Support.</a></li>
+                                        <?php if ($result3->num_rows > 0) {
+                                                        foreach ($result3 as $result_three) { ?>
+                                                <li><a href="./services/service-details?view=<?php echo $result_three['id'] ?>"><?php
+                                                $string = strip_tags($result_three['service_category']); 
+                                                $words = explode(' ', $string); 
+                                                $limitedWords = implode(' ', array_slice($words, 0, 3));
+                                                echo $limitedWords;
+                                                ?></a>
+                                                            </li>
+                                                        <?php }
+                                                    } ?>
+                                                
                                             </ul>
                                         </li>
                                         <li class=""><a href="./projects/projects">Projects</a>

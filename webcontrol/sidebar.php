@@ -3,7 +3,7 @@
     <div class="flapt-logo">
     <a href="dashboard" style="text-decoration: none;">
     <img src="./img/logo-2.png" alt="" title="" width="70px" class="ms-2 my-4">
-    <span class="title h6" style="color:#fa7720;font-weight:bolder;"> Hyrdroinformatics</span>
+    <span class="title h6" style="color:#034694;font-weight:bolder;"> Hyrdroinformatics</span>
         </a>
         
     </div>

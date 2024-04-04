@@ -73,7 +73,7 @@ $results = $stmt->get_result();
                 <div class="project-block-five all masonry-item power-energy material col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><img src="../webcontrol/assets/project_image/<?php echo $result['image'];?>" alt=""></figure>
+                            <figure class="image"><img src="../webcontrol/assets/project_image/<?php echo $result['image'];?>" alt="" style="height:300px"></figure>
                             <div class="overlay-box">
                                 <div class="inner">
                                     <div class="icon-box"><a href="../webcontrol/assets/project_image/<?php echo $result['image'];?>" class="lightbox-image"
@@ -84,10 +84,12 @@ $results = $stmt->get_result();
                         <div class="caption-box">
                             <h4><a href="project-detail?view=<?php echo $result['id'] ?>"><?php echo $result['title'];?></a></h4>
                             <div class="text"><?php
-                                  $words = str_word_count($result['body'], 1);
-                                     $limitedWords = implode(' ', array_slice($words, 0, 12));
-                                     echo $limitedWords;
-                            ?></div>
+                    $body_without_tags = strip_tags($result['body']); 
+    $words = str_word_count($body_without_tags, 1);
+    $limitedWords = implode(' ', array_slice($words, 0, 12));
+    echo $limitedWords;
+?>
+                            </div>
                         </div>
                     </div>
                 </div>

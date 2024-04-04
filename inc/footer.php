@@ -47,7 +47,7 @@ $result = $stmt->get_result();
                         <div class="footer-logo">
                             <figure class="image"><a href="#"><img src="../images/logo-2.png" alt="" title=""
                                         width="70px"></a>
-                                <span class="title h5" style="color:#fa7720;font-weight:bolder;">
+                                <span class="title h5" style="color:#034694;font-weight:bolder;">
                                     Hyrdroinformatics</span>
                             </figure>
                         </div>
@@ -77,11 +77,11 @@ $result = $stmt->get_result();
                         <h2 class="widget-title">Quick links</h2>
                         <div class="widget-content">
                             <ul class="list">
-                                <li><a href="#">Company History</a></li>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="../about/about">Company History</a></li>
+                                <li><a href="../about/about">About Us</a></li>
                                 <li><a href="../contact/contact.php">Contact Us</a></li>
-                                <li><a href="../services/pipeline-route.php">Services</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="../services/more-services">Services</a></li>
+                                <li><a href="../policy">Privacy Policy</a></li>
                             </ul>
                         </div>
                     </div>

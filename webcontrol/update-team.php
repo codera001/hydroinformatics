@@ -114,13 +114,12 @@ if (isset($_POST['update_team'])) {
                                         
                                             <div class="form-group mb-3">
                                                 <label for="name">Name</label>
-                                                <textarea style="height: 100px;" id="content" name="name" cols="30" rows="10"
-                                                    class="form-control editor"><?php echo $result['name']; ?></textarea>
+                                                <input type="text" name="name" class="form-control" value="<?php echo $result['name']; ?>">
+                                               
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label for="name">Title</label>
-                                                <textarea style="height: 100px;" id="content" name="title" cols="30" rows="10"
-                                                    class="form-control editor"><?php echo $result['title']; ?></textarea>
+                                                <input type="text" name="title" class="form-control" value="<?php echo $result['title']; ?>">
                                             </div>
 
                                           

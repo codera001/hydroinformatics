@@ -57,58 +57,146 @@ $result10 = $stmt->get_result();
 </style>
 
 <!--Main Slider-->
-<section class="main-slider style-two ">
-    <div class="rev_slider_wrapper fullwidthbanner-container" id="rev_slider_three_wrapper" data-source="gallery">
-        <div class="rev_slider bg-primary fullwidthabanner" id="rev_slider_three" data-version="5.4.1">
-            <?php
 
-            ?>
-            <ul>
-                <!-- Slide 1 -->
-                <?php if ($result1->num_rows > 0) {
-                    foreach ($result1 as $result_one) { ?>
-                        <li data-transition="parallaxvertical " data-description="Slide Description" data-easein="default"
-                            data-easeout="default" data-fsmasterspeed="50" data-fsslotamount="7" data-fstransition="fade"
-                            data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1681" data-masterspeed="default"
-                            data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5=""
-                            data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0"
-                            data-saveperformance="off" data-slotamount="default"
-                            data-thumb="./webcontrol/assets/carousel_image/<?php echo $result_one['image'] ?>">
+    
+<div id="rev_slider_4_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container slide-overlay"
+    data-alias="classic4export" data-source="gallery">
 
-                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10"
-                                data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="./webcontrol/assets/carousel_image/<?php echo $result_one['image'] ?>
-                                ">
+    <!-- START REVOLUTION SLIDER 5.4.8 auto mode -->
+    <div id="rev_slider_4_1" class="rev_slider fullwidthabanner" data-version="5.4.8">
+        <div class="slotholder"></div>
+        <ul>
+            <?php if ($result1->num_rows > 0) {
+                foreach ($result1 as $result_one) { ?>
+                    <li data-index="rs-11" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                        data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300"
+                        data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
+                        data-param10="" data-description="">
+                        <img src="./webcontrol/assets/carousel_image/<?php echo $result_one['image']; ?>" alt=""
+                            title="slider-mainbg-008" width="1920" height="725" data-bgposition="center center"
+                            data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 
-                            <div class="tp-caption" data-paddingbottom="[100, 100, 100, 100]"
-                                data-paddingleft="[100, 100, 100, 100]" data-paddingright="[100, 100, 100, 100]"
-                                data-paddingtop="[200, 200, 200, 200]" data-responsive_offset="on" data-type="text"
-                                data-height="none" data-width="['800','800','800','450']" data-whitespace="normal"
-                                data-hoffset="['15','15','15','15']" data-voffset="['-65','-105','-85','-85']"
+                        <div class="tp-caption haeding-slide heilight-white-text" id="slide-11-layer-15"
+                            data-x="['left','left','left','center']" data-hoffset="['50','50','30','0']"
+                            data-y="['top','top','top','middle']" data-voffset="['161','150','91','-93']"
+                            data-fontsize="['66','66','35','35']" data-lineheight="['76','76','45','45']"
+                            data-fontweight="['600','600','600','600']" data-width="none" data-height="none"
+                            data-whitespace="nowrap" data-type="text" data-responsive_offset="on"
+                            data-frames='[{"delay":240,"speed":1500,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
+                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                            <?php $title = $result_one['title'];
+                            $words = explode(' ', $title);
+                            $first_three_words = implode(' ', array_slice($words, 0, 2));
+                            $last_word = array_pop($words);
+                            $remaining_words = implode(' ', array_slice($words, 2));
+                            echo $first_three_words ?>
+                        </div>
+                        <div class="tp-caption haeding-slide heilight-white-text" id="slide-11-layer-16"
+                            data-x="['left','left','left','center']" data-hoffset="['50','50','30','0']"
+                            data-y="['top','top','top','middle']" data-voffset="['237','225','141','-44']"
+                            data-fontsize="['66','66','35','35']" data-lineheight="['76','76','45','45']"
+                            data-fontweight="['600','600','600','600']" data-width="none" data-height="none"
+                            data-whitespace="nowrap" data-type="text" data-responsive_offset="on"
+                            data-frames='[{"delay":750,"speed":1500,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
+                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                            <?php echo $remaining_words; ?> <strong>
+                                <?php echo $last_word; ?>
+                            </strong>
+                        </div>
+                        <div class="tp-caption desc-slide text-white" id="slide-11-layer-22" data-x="['left','left','left','center']"
+                            data-hoffset="['50','50','30','0']" data-y="['middle','middle','middle','middle']"
+                            data-voffset="['-2','-2','11','-6']" data-fontsize="['16','16','14','13']"
+                            data-lineheight="['28','28','28','22']" data-width="none" data-height="none" data-color="#fff"
+                            data-whitespace="nowrap" data-visibility="['on','on','on','off']" data-type="text"
+                            data-responsive_offset="on"
+                            data-frames='[{"delay":950,"speed":1500,"frame":"0","from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['left','left','left','center']" data-paddingtop="[0,0,0,0]"
+                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                            <?php echo $result_one['body'] ?>
+                        </div>
+                        <div class="tp-caption tp-resizeme " data-paddingbottom="[100, 100, 100, 100]"
+                        data-x="['left','left','left','center']"
+                            data-hoffset="['50','50','30','0']"
+                            data-paddingleft="[0, 0, 130, 130]" data-paddingright="[10, 10, 0, 0]"
+                                data-paddingtop="[150, 150, 150, 150]"  data-responsive_offset="on" data-type="text"
+                                data-height="none" data-whitespace="normal" data-width="['800', '800','800','450']"
+                                data-hoffset="['15','15','15','15']" data-voffset="['120','100','100','100']"
                                 data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']"
                                 data-textalign="['top','top','top','top']"
-                                data-frames='[{"delay":0,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                                <h2>
-                                    <?php echo $result_one['title'] ?>
-
-                                </h2><br><br>
-                            </div>
-
-                            <div class="tp-caption" data-paddingbottom="[100, 100, 100, 100]"
-                                data-paddingleft="[100, 100, 100, 100]" data-paddingright="[100, 100, 100, 100]"
-                                data-paddingtop="[150, 150, 150, 150]" data-responsive_offset="on" data-type="text"
-                                data-height="none" data-width="['650','650','700','450']" data-whitespace="normal"
-                                data-hoffset="['15','15','15','15']" data-voffset="['40','10','10','10']"
-                                data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                                <div class="text text-dark">
-                                    <?php echo $result_one['body'] ?>
-
+                                data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
+                                <div class="link-box clearfix">
+                                    <a href="projects/projects" class="theme-btn btn-style-one">Our Projects</a>
                                 </div>
                             </div>
 
-                            <div class="tp-caption tp-resizeme " data-paddingbottom="[100, 100, 100, 100]"
-                                data-paddingleft="[100, 100, 100, 100]" data-paddingright="[100, 100, 100, 100]"
+                    </li>
+                <?php } ?>
+            <?php } else { ?>
+                <div class="col-md-12">
+                    <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
+                </div>
+            <?php } ?>
+
+            <!-- second slider -->
+            <?php if ($result2->num_rows > 0) {
+                foreach ($result2 as $result_two) { ?>
+
+                    <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                        data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300"
+                        data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
+                        data-param10="" data-description="">
+
+                        <img src="./webcontrol/assets/carousel_image/<?php echo $result_two['image']; ?>" alt="" title="slider-mainbg-009" width="1920"
+                            height="725" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+                            class="rev-slidebg" data-no-retina>
+
+                        <div class="tp-caption haeding-slide" id="slide-3-layer-5" data-x="['right','right','right','center']"
+                            data-hoffset="['50','40','30','0']" data-y="['top','top','top','middle']"
+                            data-voffset="['161','150','89','-93']" data-fontsize="['66','66','35','35']"
+                            data-lineheight="['76','76','45','45']" data-fontweight="['600','600','600','600']"
+                            data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
+                            data-responsive_offset="on"
+                            data-frames='[{"delay":240,"speed":1500,"frame":"0","from":"x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
+                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">      <?php $title = $result_two['title'];
+                            $words = explode(' ', $title);
+                            $first_three_words = implode(' ', array_slice($words, 0, 2));
+                            $last_word = array_pop($words);
+                            $remaining_words = implode(' ', array_slice($words, 2));
+                            echo $first_three_words ?>
+                            <strong> <?php echo $remaining_words; ?></strong>
+                        </div>
+                        <div class="tp-caption haeding-slide" id="slide-3-layer-6" data-x="['right','right','right','center']"
+                            data-hoffset="['50','50','30','0']" data-y="['top','top','top','middle']"
+                            data-voffset="['236','225','142','-44']" data-fontsize="['66','66','35','35']"
+                            data-lineheight="['76','76','45','45']" data-fontweight="['600','600','600','600']"
+                            data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
+                            data-responsive_offset="on"
+                            data-frames='[{"delay":240,"speed":1500,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
+                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                            <?php echo $last_word; ?> </div>
+
+                        <div class="tp-caption desc-slide text-white" id="slide-3-layer-7" data-x="['right','right','right','center']"
+                            data-hoffset="['50','40','30','0']" data-y="['middle','middle','middle','middle']"
+                            data-voffset="['-3','-2','12','-6']" data-fontsize="['16','16','14','13']"
+                            data-lineheight="['28','28','28','22']" data-width="none" data-height="none" data-color="#fff"
+                            data-whitespace="nowrap" data-visibility="['on','on','on','off']" data-type="text"
+                            data-responsive_offset="on"
+                            data-frames='[{"delay":950,"speed":1500,"frame":"0","from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['right','right','right','center']" data-paddingtop="[0,0,0,0]"
+                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                            <?php echo $result_two['body'] ?>
+                        </div>
+                        <div class="tp-caption tp-resizeme " 
+                        data-x="['right','right','right','center']"
+                            data-hoffset="['50','40','30','0']" data-y="['middle','middle','middle','middle']"
+                            data-voffset="['-3','-2','12','-6']" 
+                                data-paddingleft="[500, 100, 130, 130]" data-paddingright="[100, 100, 0, 0]"
                                 data-paddingtop="[150, 150, 150, 150]" data-responsive_offset="on" data-type="text"
                                 data-height="none" data-whitespace="normal" data-width="['800', '800','800','450']"
                                 data-hoffset="['15','15','15','15']" data-voffset="['120','100','100','100']"
@@ -119,59 +207,71 @@ $result10 = $stmt->get_result();
                                     <a href="projects/projects" class="theme-btn btn-style-one">Our Projects</a>
                                 </div>
                             </div>
-                        </li>
-                    <?php } ?>
-                <?php } else { ?>
-                    <div class="col-md-12">
-                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
-                    </div>
+                    </li>
+
                 <?php } ?>
+            <?php } else { ?>
+                <div class="col-md-12">
+                    <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
+                </div>
+            <?php } ?>
+            <!-- third slider -->
+            <?php if ($result3->num_rows > 0) {
+                foreach ($result3 as $result_three) { ?>
 
+                    <li data-index="rs-0" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                        data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300"
+                        data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
+                        data-param10="" data-description="">
 
-                <?php if ($result2->num_rows > 0) {
-                    foreach ($result2 as $result_two) { ?>
-                        <!-- Slide 2 -->
-                        <li data-transition="parallaxvertical" data-description="Slide Description" data-easein="default"
-                            data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade"
-                            data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1682" data-masterspeed="default"
-                            data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5=""
-                            data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0"
-                            data-saveperformance="off" data-slotamount="default"
-                            data-thumb="./webcontrol/assets/carousel_image/<?php echo $result_two['image'] ?>">
+                        <img src="./webcontrol/assets/carousel_image/<?php echo $result_three['image']; ?>" alt="" title="slider-mainbg-009" width="1920"
+                            height="725" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+                            class="rev-slidebg" data-no-retina>
 
-                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10"
-                                data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="./webcontrol/assets/carousel_image/<?php echo $result_two['image'] ?>
-                                ">
+                        <div class="tp-caption haeding-slide" id="slide-3-layer-5" data-x="['right','right','right','center']"
+                            data-hoffset="['50','40','30','0']" data-y="['top','top','top','middle']"
+                            data-voffset="['161','150','89','-93']" data-fontsize="['66','66','35','35']"
+                            data-lineheight="['76','76','45','45']" data-fontweight="['600','600','600','600']"
+                            data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
+                            data-responsive_offset="on"
+                            data-frames='[{"delay":240,"speed":1500,"frame":"0","from":"x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
+                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">      <?php $title = $result_three['title'];
+                            $words = explode(' ', $title);
+                            $first_three_words = implode(' ', array_slice($words, 0, 2));
+                            $last_word = array_pop($words);
+                            $remaining_words = implode(' ', array_slice($words, 2));
+                            echo $first_three_words ?>
+                            <strong> <?php echo $remaining_words; ?></strong>
+                        </div>
+                        <div class="tp-caption haeding-slide" id="slide-3-layer-6" data-x="['right','right','right','center']"
+                            data-hoffset="['50','50','30','0']" data-y="['top','top','top','middle']"
+                            data-voffset="['236','225','142','-44']" data-fontsize="['66','66','35','35']"
+                            data-lineheight="['76','76','45','45']" data-fontweight="['600','600','600','600']"
+                            data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
+                            data-responsive_offset="on"
+                            data-frames='[{"delay":240,"speed":1500,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
+                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                            <?php echo $last_word; ?> </div>
 
-                            <div class="tp-caption" data-paddingbottom="[100, 100, 100, 100]"
-                                data-paddingleft="[100, 100, 100, 100]" data-paddingright="[100, 100, 100, 100]"
-                                data-paddingtop="[200, 200, 200, 200]" data-responsive_offset="on" data-type="text"
-                                data-height="none" data-width="['800', '800','800','450']" data-whitespace="normal"
-                                data-hoffset="['15','15','15','15']" data-voffset="['-65','-105','-85','-85']"
-                                data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"delay":0,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                                <h2>
-                                    <?php echo $result_two['title'] ?>
-                                </h2>
-                            </div>
-
-                            <div class="tp-caption" data-paddingbottom="[100, 100, 100, 100]"
-                                data-paddingleft="[100, 100, 100, 100]" data-paddingright="[100, 100, 100, 100]"
-                                data-paddingtop="[150, 150, 150, 150]" data-responsive_offset="on" data-type="text"
-                                data-height="none" data-width="['650','650','700','450']" data-whitespace="normal"
-                                data-hoffset="['15','15','15','15']" data-voffset="['40','10','10','10']"
-                                data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                                <div class="text text-light">
-                                    <?php echo $result_two['body'] ?>
-                                </div>
-                            </div>
-
-                            <div class="tp-caption tp-resizeme" data-paddingbottom="[100, 100, 100, 100]"
-                                data-paddingleft="[100, 100, 100, 100]" data-paddingright="[100, 100, 100, 100]"
-                                data-paddingtop="[150, 150, 150, 150]" data-responsive_offset="on" data-type="text"
+                        <div class="tp-caption desc-slide text-white" id="slide-3-layer-7" data-x="['right','right','right','center']"
+                            data-hoffset="['50','40','30','0']" data-y="['middle','middle','middle','middle']"
+                            data-voffset="['-3','-2','12','-6']" data-fontsize="['16','16','14','13']"
+                            data-lineheight="['28','28','28','22']" data-width="none" data-height="none" data-color="#fff"
+                            data-whitespace="nowrap" data-visibility="['on','on','on','off']" data-type="text"
+                            data-responsive_offset="on"
+                            data-frames='[{"delay":950,"speed":1500,"frame":"0","from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                            data-textAlign="['right','right','right','center']" data-paddingtop="[0,0,0,0]"
+                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                            <?php echo $result_three['body'] ?>
+                        </div>
+                        <div class="tp-caption tp-resizeme "  data-x="['right','right','right','center']"
+                            data-hoffset="['50','40','30','0']" data-y="['middle','middle','middle','middle']"
+                            data-voffset="['-3','-2','12','-6']" 
+                                data-paddingleft="[500, 100, 130, 130]" data-paddingright="[100, 100, 0, 0]"
+                                data-paddingtop="[150, 150, 150, 150]"data-responsive_offset="on" data-type="text"
                                 data-height="none" data-whitespace="normal" data-width="['800', '800','800','450']"
                                 data-hoffset="['15','15','15','15']" data-voffset="['120','100','100','100']"
                                 data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']"
@@ -181,81 +281,29 @@ $result10 = $stmt->get_result();
                                     <a href="projects/projects" class="theme-btn btn-style-one">Our Projects</a>
                                 </div>
                             </div>
-                        </li>
-                    <?php } ?>
-                <?php } else { ?>
-                    <div class="col-md-12">
-                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
-                    </div>
+                    </li>
+
                 <?php } ?>
+            <?php } else { ?>
+                <div class="col-md-12">
+                    <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
+                </div>
+            <?php } ?>
 
-                <?php if ($result3->num_rows > 0) {
-                    foreach ($result3 as $result_three) { ?>
-                        <!-- Slide 3 -->
-                        <li data-transition="parallaxvertical" data-description="Slide Description" data-easein="default"
-                            data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade"
-                            data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1683" data-masterspeed="default"
-                            data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5=""
-                            data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0"
-                            data-saveperformance="off" data-slotamount="default"
-                            data-thumb="./webcontrol/assets/carousel_image/<?php echo $result_three['image'] ?>">
-
-                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10"
-                                data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="./webcontrol/assets/carousel_image/<?php echo $result_three['image'] ?>
-                                ">
-
-                            <div class="tp-caption" data-paddingbottom="[100, 100, 100, 100]"
-                                data-paddingleft="[100, 100, 100, 100]" data-paddingright="[100, 100, 100, 100]"
-                                data-paddingtop="[200, 200, 200, 200]" data-responsive_offset="on" data-type="text"
-                                data-height="none" data-width="['1000', '1000','1000','450']" data-whitespace="normal"
-                                data-hoffset="['15','15','15','15']" data-voffset="['-65','-105','-85','-85']"
-                                data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"delay":0,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                                <h2>
-                                    <?php echo $result_three['title'] ?>
-                                </h2>
-
-                            </div>
-
-                            <div class="tp-caption" data-paddingbottom="[100, 100, 100, 100]"
-                                data-paddingleft="[100, 100, 100, 100]" data-paddingright="[100, 100, 100, 100]"
-                                data-paddingtop="[150, 150, 150, 150]" data-responsive_offset="on" data-type="text"
-                                data-height="none" data-width="['650','650','700','450']" data-whitespace="normal"
-                                data-hoffset="['15','15','15','15']" data-voffset="['40','10','10','10']"
-                                data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                                <div class="text text-light">
-                                    <?php echo $result_three['body'] ?>
-                                </div>
-                            </div>
-
-                            <div class="tp-caption tp-resizeme" data-paddingbottom="[100, 100, 100, 100]"
-                                data-paddingleft="[100, 100, 100, 100]" data-paddingright="[100, 100, 100, 100]"
-                                data-paddingtop="[150, 150, 150, 150]" data-responsive_offset="on" data-type="text"
-                                data-height="none" data-whitespace="normal" data-width="['800', '800','800','450']"
-                                data-hoffset="['15','15','15','15']" data-voffset="['120','100','100','100']"
-                                data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                                <div class="link-box clearfix">
-                                    <a href="projects/projects" class="theme-btn btn-style-one">Our Projects</a>
-                                </div>
-                            </div>
-                        </li>
-                    <?php } ?>
-                <?php } else { ?>
-                    <div class="col-md-12">
-                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
-                    </div>
-                <?php } ?>
-
-
-            </ul>
+        </ul>
+        <div class="tp-loader off">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
         </div>
+        <div class="tp-bannertimer"></div>
     </div>
-</section>
+
+</div>
+  
+
 <!--End Main Slider-->
 
 <!-- Links Bar -->
@@ -291,7 +339,7 @@ $result10 = $stmt->get_result();
                         <li>Geophysical Seabed Survey.</li>
                         <li>Bathymetric Survey.</li>
                         <li>Geotechnical Engineering.</li>
-                        <li>G.I.S</li>
+                        <li>Geographic Information System</li>
                         <li>Rig move and Rig positioning</li>
                         <li>Pipeline Route Survey</li>
                         <li>Dredge monitoring and supervision</li>
@@ -322,8 +370,8 @@ $result10 = $stmt->get_result();
                                     data-fancybox="images"><img
                                         src="./webcontrol/assets/home_image/<?php echo $result_four['image'] ?>" alt=""></a>
                             </figure>
-                            <div class="video-link wow zoomIn"><a href="<?php echo $result_four['video_link']; ?>" class="link"
-                                    data-fancybox="gallery" data-caption=""><span class="icon fa fa-play"></span></a></div>
+                            <!-- <div class="video-link wow zoomIn"><a href="<?php echo $result_four['video_link']; ?>" class="link"
+                                    data-fancybox="gallery" data-caption=""><span class="icon fa fa-play"></span></a></div> -->
 
                         <?php } ?>
                     <?php } else { ?>
@@ -429,7 +477,7 @@ $result10 = $stmt->get_result();
                 <div class="sec-title">
                     <!-- <span class="title">Our Works</span> -->
                     <h2>Our Projects <br>You Love</h2>
-                    <div class="text">At <span style="color:#df6512">Hydroinformatics Multi Services Limited,</span> we
+                    <div class="text">At <span style="color:#034694">Hydroinformatics Multi Services Limited,</span> we
                         pour our hearts into every project we undertake. From conception to completion, our team is
                         dedicated to bringing your vision to life with creativity, precision, and unwavering commitment.
 
@@ -526,10 +574,10 @@ $result10 = $stmt->get_result();
         </div>
 
         <div class="row">
-            <div class="feature-column col-lg-6 col-md-12 col-sm-12">
+            <div class="feature-column col-lg-12 col-md-12 col-sm-12">
                 <div class="inner-column">
                     <div class="text-box">
-                        <div class="text">At <span style="color:#df6512">Hydroinformatics Multi Services Limited,</span>
+                        <div class="text">At <span style="color:#034694">Hydroinformatics Multi Services Limited,</span>
                             we understand that making the right choice for your business is crucial. Here's why we
                             believe we're the perfect fit for your needs.</div>
                     </div>
@@ -549,9 +597,9 @@ $result10 = $stmt->get_result();
                     <div class="feature-block">
                         <div class="inner">
                             <div class="icon-box"><span class="flaticon-rule-1"></span></div>
-                            <h3><a href="#">Quality Product</a></h3>
+                            <h3><a href="#">Quality Data</a></h3>
                             <div class="text">Quality is at the core of everything we do. We adhere to stringent quality
-                                standards throughout our processes to ensure that every product we deliver meets or
+                                standards throughout our acquisitions to ensure that every data we deliver meets or
                                 exceeds your expectations.</div>
                         </div>
                     </div>
@@ -560,70 +608,15 @@ $result10 = $stmt->get_result();
                     <div class="feature-block">
                         <div class="inner">
                             <div class="icon-box"><span class="flaticon-trolley"></span></div>
-                            <h3><a href="#">Quick Delivery</a></h3>
-                            <div class="text">We understand the importance of timely delivery. With our streamlined
-                                processes and efficient logistics, we ensure that your orders are processed promptly and
-                                delivered to you with speed and precision.</div>
+                            <h3><a href="#">Accuracy</a></h3>
+<div class="text">At the core of our methodology lies an unwavering commitment to our services. We recognize that accuracy forms the cornerstone of every survey endeavor. Leveraging our extensive expertise and cutting-edge digital tools, we guarantee that our services consistently surpass industry standards, ensuring excellence at every turn.</div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Accordion Column -->
-            <div class="accordion-column col-lg-6 col-md-12 col-sm-12">
-                <div class="inner-column">
-                    <!-- <div class="text-box">
-                                <div class="text">Excepteur sint occaecat cupidatat proident sunt culpa officia desernt
-                                    mollit anim est laborum sed perspiciatis.</div>
-                            </div> -->
-
-                    <ul class="accordion-box">
-                        <!--Block-->
-                        <li class="accordion block active-block">
-                            <div class="acc-btn active">Inventory management system <div class="icon flaticon-add-1">
-                                </div>
-                            </div>
-                            <div class="acc-content current">
-                                <div class="content">
-                                    <div class="text">Our advanced inventory management system enables us to maintain
-                                        optimal stock levels, minimize lead times, and ensure on-time delivery of your
-                                        orders.</div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!--Block-->
-                        <li class="accordion block">
-                            <div class="acc-btn">Our Work Flow Success <div class="icon flaticon-add-1"></div>
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Our workflow is designed for success. From initial consultation to
-                                        project completion, we follow a structured approach that ensures clear
-                                        communication, timely updates, and seamless collaboration. We keep you informed
-                                        at every step of the way, so you can trust that your project is in good hands.
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!--Block-->
-                        <li class="accordion block">
-                            <div class="acc-btn">Scheduled Updates <div class="icon flaticon-add-1"></div>
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">We believe in keeping you informed and involved throughout the
-                                        process. Our scheduled updates ensure that you are always up-to-date on the
-                                        progress of your project. Whether it's milestones achieved, challenges
-                                        encountered, or next steps planned, you'll have full visibility into our work.
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        
         </div>
     </div>
 </section>

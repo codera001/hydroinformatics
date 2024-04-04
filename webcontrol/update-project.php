@@ -114,8 +114,8 @@ if (isset($_POST['update_project'])) {
                                            
                                             <div class="form-group mb-3">
                                                 <label for="title">Title</label>
-                                                <textarea style="height: 100px;" id="content" name="title" cols="30" rows="10"
-                                                    class="form-control editor"><?php echo $result['title']; ?></textarea>
+                                                <input type="text" name="title" class="form-control" value="<?php echo $result['title']; ?>">
+                                              
                                             </div>
 
                                             <div class="form-group mb-3">

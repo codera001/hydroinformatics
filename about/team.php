@@ -1,4 +1,9 @@
-<?php require '../inc/header.php';?>
+<?php require '../inc/header.php';
+$stmt = $conn->prepare("SELECT * FROM team");
+$stmt->execute();
+$results = $stmt->get_result();
+
+?>
 
         <!-- Sticky Header  -->
         <div class="sticky-header">
@@ -59,118 +64,32 @@
 
             <div class="row">
                 <!-- Team Block -->
+                <?php if ($results->num_rows > 0) {
+                    foreach ($results as $result) { ?>
                 <div class="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><a href="team.html"><img src="../images/resource/team-1.jpg" alt=""></a></figure>
-                            <ul class="social-icon-one">
+                            <figure class="image"><a href="team.html"><img src="../webcontrol/assets/team/<?php echo $result['image'];?>" alt=""></a></figure>
+                            <!-- <ul class="social-icon-one">
                                 <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
                                 <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
                                 <li><a href="#"><span class="fab fa-twitter"></span></a></li>
                                 <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            </ul>
+                            </ul> -->
                         </div>
                         <div class="info-box">
-                            <h5 class="name"><a href="team.html">Christine Bailly</a></h5>
-                            <span class="designation">Developer</span>
+                            <h5 class="name"><a href="team.html"><?php echo $result['name'];?></a></h5>
+                            <span class="designation"><?php echo $result['title'];?></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Team Block -->
-                <div class="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="team.html"><img src="../images/resource/team-2.jpg" alt=""></a></figure>
-                            <ul class="social-icon-one">
-                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            </ul>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name"><a href="team.html">Simone Ledoux</a></h5>
-                            <span class="designation">Designer</span>
-                        </div>
+                <?php } ?>
+                <?php } else { ?>
+                    <div class="col-md-12">
+                        <p class="pb-5 mb-5 py-5 text-center" style="font-size: 26px;"> NO RECORD FOUND </p>
                     </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="team.html"><img src="../images/resource/team-3.jpg" alt=""></a></figure>
-                            <ul class="social-icon-one">
-                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            </ul>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name"><a href="team.html">Bernard Payet</a></h5>
-                            <span class="designation">Marketer</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="team.html"><img src="../images/resource/team-4.jpg" alt=""></a></figure>
-                            <ul class="social-icon-one">
-                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            </ul>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name"><a href="team.html">Adam Lechner</a></h5>
-                            <span class="designation">Developer</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="team.html"><img src="../images/resource/team-5.jpg" alt=""></a></figure>
-                            <ul class="social-icon-one">
-                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            </ul>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name"><a href="team.html">Rebecca Stein</a></h5>
-                            <span class="designation">Designer</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="team.html"><img src="../images/resource/team-6.jpg" alt=""></a></figure>
-                            <ul class="social-icon-one">
-                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            </ul>
-                        </div>
-                        <div class="info-box">
-                            <h5 class="name"><a href="team.html">Gunter Reich</a></h5>
-                            <span class="designation">Marketer</span>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </section>

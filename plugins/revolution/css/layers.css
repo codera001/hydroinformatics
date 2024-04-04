@@ -45,6 +45,16 @@ website:   	http://www.themepunch.com
 	white-space:nowrap;
 }
 
+.tp-caption.haeding-slide, .tp-caption.heilight-white-text, .tp-caption.heading-dark-slide {
+    color: #fff;
+    /* font-family: "Titillium Web"; */
+    }
+.tp-caption strong{
+    color:#3457D5
+}
+.tp-caption.desc-slide{
+    color:#fff !important;
+}
 .tp-caption.small_text,.small_text
 {
 	border-style:none;
@@ -5072,7 +5082,7 @@ tp-caption.Team-Thumb,
 }
 .rev_slider {
     overflow: hidden;
-    background: rgba(8,37,103,.5);
+    /* background: rgba(8,37,103,.5); */
 }
 
 .defaultimg{
@@ -5771,7 +5781,7 @@ tp-caption.Team-Thumb,
     }
     .tp-caption.ParallaxWebsite-FooterItem:hover,
     .ParallaxWebsite-FooterItem:hover {
-        color: rgba(255, 255, 255, 1.00);
+        color: rgba(255, 255, 255, 0.50);
         text-decoration: none;
         background-color: transparent;
         border-color: transparent;

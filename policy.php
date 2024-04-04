@@ -1,26 +1,5 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<?php require './inc/navbar.php';?>
 
-IMG-20231221-WA0081.jpg
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    <!-- Title  -->
-    <title>RiskyT - App Landing Page </title>
-
-    <!-- Favicon  -->
-    <link rel="icon" href="../assets/img/ricky-T.png">
-    <!-- ***** All CSS Files ***** -->
-
-    <!-- Style css -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-
-</head>
-<body class="transparent-header">
     <!-- Loader -->
 
     <!-- Loader End-->
@@ -35,17 +14,17 @@ IMG-20231221-WA0081.jpg
         <!--==============end page header============-->
         <!-- Section Blogs -->
         <section>
-            <div class="container">
+            <div class="container mb-5">
                 <div class="row">
                     <div class="col-lg-8 m-auto">
                         <div class="zero-post">
 
                             <div class="post-content">
                                 <center>
-                                    <img width="200" src="../assets/img/Risky-T-outside.png" alt="">
+                                    <img width="200" src="./images/logo-2.png" alt="">
                                 </center>
                                 <h4>Privacy Policy</h4>
-                                This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from www.angel11.com.ng (the “Site”) and other related services of Angel 11:11 Mart (Including our Mobile Apps). <br><br>
+                                This Privacy Policy describes how your personal information is collected, used, and shared when you visit and other related services of Hyrdroinformatics Multi services Limited <br><br>
 
                                 When you visit the Site, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies that are installed on your device. Additionally, as you browse the Site, we collect information about the individual web pages or products that you view, what websites or search terms referred you to the Site, and information about how you interact with the Site. We refer to this automatically-collected information as “Device Information.” <br><br>
 
@@ -83,46 +62,4 @@ IMG-20231221-WA0081.jpg
         </section>
         <!-- End Blogs -->
         <!-- Section Newsletter -->
-
-             <!-- Footer Bottom -->
-             <div class="footer-bottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- Copyright Area -->
-                            <div
-                                class="copyright-area d-flex flex-wrap justify-content-center justify-content-sm-between text-center py-4">
-                                <!-- Copyright Left -->
-                                <div class="copyright-left">&copy;
-                                    <?php echo date("Y"); ?> RiskyT app | All rights reserved.
-                                </div>
-                                <!-- Copyright Right -->
-                                <div class="copyright-right">Made with <i class="fas fa-heart"></i> By <a
-                                        href="#">Luzoma Microsystems</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!--====== Footer Area End ======-->
-    </div>
-
-
-    <!-- ***** All jQuery Plugins ***** -->
-
-    <!-- jQuery(necessary for all JavaScript plugins) -->
-    <script src="../assets/js/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap js -->
-    <script src="../assets/js/bootstrap/popper.min.js"></script>
-    <script src="../assets/js/bootstrap/bootstrap.min.js"></script>
-
-    <!-- Plugins js -->
-    <script src="../assets/js/plugins/plugins.min.js"></script>
-
-    <!-- Active js -->
-    <script src="../assets/js/active.js"></script>
-</body>
-
-</html>
+        <?php require './inc/footer-main.php'; ?>

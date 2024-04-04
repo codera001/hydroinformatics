@@ -63,13 +63,13 @@ $results = $stmt->get_result();
                     <div class="row clearfix">
                     <?php if ($results->num_rows > 0) {
                     foreach ($results as $result) { ?>
-                        <div class="image col-lg-8 col-md-8 col-sm-12 wow fadeIn">
+                        <div class="image col-lg-12 col-md-12 col-sm-12 wow fadeIn">
                             <a href="#" class="lightbox-image" data-fancybox="gallery"><img src="../webcontrol/assets/project_image/<?php echo $result['image'];?>" alt=""></a>
                         </div>
 
-                        <div class="image col-lg-4 col-md-4 col-sm-12 wow fadeIn" data-wow-delay="400ms">
+                        <!-- <div class="image col-lg-4 col-md-4 col-sm-12 wow fadeIn" data-wow-delay="400ms">
                             <a href="#" class="lightbox-image" data-fancybox="gallery"><img src="../webcontrol/assets/project_image/<?php echo $result['image'];?>" alt=""></a>
-                        </div>
+                        </div> -->
                         <?php } ?>
                 <?php } else { ?>
                     <div class="col-md-12">

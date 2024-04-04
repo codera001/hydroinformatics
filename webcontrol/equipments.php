@@ -33,7 +33,7 @@ $results = $stmt->get_result();
                 <div class="col-12 box-margin">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="card-title">Equipments</h6>
+                            <h6 class="card-title">Equipment</h6>
                             <button type="button" class="btn btn-rounded btn-outline-success float-end">
                                 <span class="btn-inner--text"><a href="add-equip">Add</a></span>
                             </button><br><br><br>
