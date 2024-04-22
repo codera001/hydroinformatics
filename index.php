@@ -491,7 +491,7 @@ $result10 = $stmt->get_result();
                     <div class="image-box">
                     <?php if ($result6->num_rows > 0) {
                 foreach ($result6 as $result_six) { ?>
-                        <figure class="image"><img src="./webcontrol/assets/project_image/<?php echo $result_six['image'];?>" alt="project-image"></figure>
+                        <figure class="image"><img src="./webcontrol/assets/project_image/<?php echo $result_six['image'];?>" alt="project-image" style="height:500px;"></figure>
                         <div class="overlay-box">
                             <div class="inner">
                                 <h3><a href="project-detail.html"><?php echo $result_six['title'];?></a>
@@ -524,7 +524,7 @@ $result10 = $stmt->get_result();
                 foreach ($result7 as $result_seven) { ?>
                 <div class="project-block wow fadeInUp">
                     <div class="image-box">
-                        <figure class="image"><img src="./webcontrol/assets/project_image/<?php echo $result_seven['image'];?>" alt="project-image"></figure>
+                        <figure class="image"><img src="./webcontrol/assets/project_image/<?php echo $result_seven['image'];?>" alt="project-image" style="height:500px"></figure>
                         <div class="overlay-box">
                             <div class="inner">
                                 <h3><a href="project-detail.html"><?php echo $result_seven['title'];?></a>

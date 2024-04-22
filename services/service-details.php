@@ -44,7 +44,7 @@ $result1 = $stmt->get_result();
                         <!-- Image Box -->
                         <div class="image-box">
                             <div class="image wow fadeIn">
-                                <a href="#" class="lightbox-image" data-fancybox="gallery"><img src="../webcontrol/assets/service_image/<?php echo $result['image'];?>" alt=""></a>
+                                <a href="#" class="lightbox-image" data-fancybox="gallery"><img src="../webcontrol/assets/service_image/<?php echo $result['image'];?>" alt="" style="height:500px"></a>
                             </div>
                         </div>
 

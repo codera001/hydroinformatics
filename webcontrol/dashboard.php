@@ -341,7 +341,7 @@ include 'header.php';
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h6 class="font-14 text-uppercase">
-                                                 <a href="change-password">Change Password</a>
+                                                 <a href="hse">HSE</a>
                                                 </h6>
                                                 <div class="row align-items-center no-gutters">
                                                     <div class="col-auto">

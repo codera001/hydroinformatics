@@ -150,7 +150,7 @@ $result3 = $stmt->get_result();
                                         <li class=""><a href="../news/blog-grid">News</a>
 
                                         </li>
-                                        <li class=""><a href="../equipments/equip">Equipments</a>
+                                        <li class=""><a href="../equipments/equip">Equipment</a>
                                             <ul>
                                                 <li><a href="products.html">Our Products</a></li>
                                                 <li><a href="product-single.html">Product Details</a></li>

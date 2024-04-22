@@ -19,6 +19,7 @@ define('CLIENTURL', 'http://localhost/hydroinformatics/webcontrol/assets/client_
 define('REVIEWURL', 'http://localhost/hydroinformatics/webcontrol/assets/review_image/');
 define('NEWSURL', 'http://localhost/hydroinformatics/webcontrol/assets/news_image/');
 define('EQUIPURL', 'http://localhost/hydroinformatics/webcontrol/assets/equip_image/');
+define('HSEURL', 'http://localhost/hydroinformatics/webcontrol/assets/hse_image/');
 
 $conn = mysqli_connect('localhost', 'root', '', 'hydroinformatics')
 or die('cant connect to database');  

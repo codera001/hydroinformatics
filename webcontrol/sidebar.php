@@ -27,7 +27,8 @@
                     <li><a href="clients"><i class='bx bx-list-ul'></i><span>Clients</span></a></li>
                     <li><a href="reviews"><i class='bx bx-list-ul'></i><span>Client Reviews</span></a></li>
                     <li><a href="team"><i class='bx bx-list-ul'></i><span>Team</span></a></li>
-                    <li><a href="equipments"><i class='bx bx-list-ul'></i><span>Equipments</span></a></li>
+                    <li><a href="equipments"><i class='bx bx-list-ul'></i><span>Equipment</span></a></li>
+                    <li><a href="hse"><i class='bx bx-list-ul'></i><span>Hse</span></a></li>
                     <li><a href="socials"><i class='bx bx-list-ul'></i><span>Socials</span></a></li>
                 
                     <li><a href="contact"><i class='bx bx-list-ul'></i><span>Contact</span></a></li>
